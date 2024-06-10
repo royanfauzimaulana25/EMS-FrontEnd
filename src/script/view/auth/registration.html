@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= htmlWebpackPlugin.options.title %> | EMS - PORSENI
+    </title>
+
+    <!-- Icon -->
+    <link rel="icon" href="../favicon.png" sizes="512x512" />
+    <!-- Style -->
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <div class="container-fluid ">
+        <div class="row vh-100 align-items-stretch p-5">
+            <div class="col-4 d-flex align-content-around flex-wrap border border-secondary shadow-sm rounded p-5"
+                style="--bs-border-opacity: .2;">
+                <div class="row">
+                    <img src="../Horizontal Logo.png" class="img-fluid" alt="Logo Image">
+                </div>
+                <div class="row">
+                    <h1 class="title text-primary fw-bold" style="font-size: 3rem;">
+                        Ayo Ikut Berkompetisi dalam event Youth Project !
+                    </h1>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <img src="../Register - Icon.png" alt="Login - Icon">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-8 align-content-around">
+                <div class="row my-5">
+                    <p class="text-end fs-5">Sudah Memiliki Akun ?
+                        <a href="login.html" class="fw-bold">Masuk Sekarang</a>
+                    </p>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-7">
+                        <h2 class="title fw-bold fs-1">Buat Akun Pendaftar</h1>
+                            <p class="text fs-3">Isi informasi akun kamu dulu ya.</p>
+
+                            <form class="mt-5">
+                                <div class="form-floating mb-3 primary">
+                                    <input type="email" class="form-control" id="email"
+                                        placeholder="youremail@mail.com" required>
+                                    <label for="email" class="">Email address</label>
+                                </div>
+                                <div class="form-floating mb-3 primary">
+                                    <input type="password" class="form-control " id="password"
+                                        placeholder="youremail@mail.com" required>
+                                    <label for="password">Password</label>
+                                </div>
+                                <div class="form-floating mb-3 primary">
+                                    <input type="password" class="form-control " id="confirm-password"
+                                        placeholder="youremail@mail.com" required>
+                                    <label for="confirm-password">Konfirmasi Password</label>
+                                </div>
+                               
+                                <button type="submit"
+                                    class="form-control btn btn-primary fs-5 fw-bold px-5 py-3 justify-self-end">Daftar</button>
+
+                                <p class="text-center mt-5 fs-3">
+                                    Dengan Membuat akun, saya setuju dengan Syarat dan Ketentuan, ketentuan dan Ketentuan Privasi. <strong>Youth Project</strong>
+                                </p>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

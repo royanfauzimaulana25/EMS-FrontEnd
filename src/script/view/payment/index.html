@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= htmlWebpackPlugin.options.title %> | EMS - PORSENI
+  </title>
+
+  <!-- Icon -->
+  <link rel="icon" href="/favicon.png" sizes="512x512" />
+  <!-- Style -->
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+  <!--  Header  -->
+  <header>
+    <nav class="navbar navbar-expand-md py-4 rounded-bottom shadow">
+      <div class="container-fluid px-5">
+        <span class="navbar-brand-sm">
+          <img src="/Horizontal Logo.png" class="img" alt="Logo Brand" style="width: 15vw;">
+        </span>
+
+        <div class="row justify-content-end">
+          <div class="col-8 text-end">
+            <div class="row">
+              <p class="title fw-bold">Person name</p>
+            </div>
+            <div class="row">
+              <a href="#">Logout</a>
+            </div>
+          </div>
+          <div class="col-2 align-content-center">
+            <img src="/Profile Icon.png" class="img-fluid" alt="Logo Brand" style="width: 15vw;">
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container my-5">
+      <div class="row align-content-center">
+        <div class="col ">
+          <div class="row text-bg-dark p-4  my-5 rounded">
+            <h1 class="fw-bold fs-3 text-center text-primary">Payment Details</h1>
+          </div>
+        </div>
+      </div>
+
+      <div class="container my-5">
+        <div class="row align-content-center ">
+          <div class="col">
+            <div class="row text-bg-dark p-4 rounded">
+              <h5 class="fw-bold  text-primary">Ringkasan Pembayaran</h5>
+              <table class="table table-borderless">
+                <tr>
+                    <td>Biaya Registrasi Photography Competition</td>
+                    <td>Rp. 50.000</td>
+                </tr>
+                <hr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      <div class="row">
+        <form id="photography" class="row g-3">
+          <div class="col-md-10">
+            <label for="metode_pembayaran" class="form-label">Metode Pembayaran</label>
+            <select id="metode_pembayaran" class="form-select" required>
+              <option selected>Pilih...</option>
+              <option>Gopay</option>
+              <option>QRIS</option>
+            </select>
+          </div>
+          <div class="col-md-2 align-content-end">
+            <button type="submit" class="btn btn-primary">Proses Pembayaran</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </main>
+</body>
+
+</html>

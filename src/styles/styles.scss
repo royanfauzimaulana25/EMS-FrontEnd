@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+// Theme Color
+$primary:                   #1A2B4E;
+$light:                     white;
+$background:               #1A2B4E;
+$dark:                     #F4F4F4;
+// Font Theme
+$font-family:               'Noto Sans';
+
+// Button
+$btn-font-family:           $font-family;
+// $btn-link-color:            $primary;
+
+// Typography
+$headings-font-family:      $font-family;
+
+
+
+
+
+// Import all of Bootstrap's CSS
+@import "~bootstrap/scss/bootstrap";
+

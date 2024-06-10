@@ -1,0 +1,5 @@
+Host		: aws-0-ap-southeast-1.pooler.supabase.com
+database name 	: postgres
+database pass	: #Ems.25qweerty#
+Port		: 6543
+User		: postgres.zbifoimzbcorbcwwdmmk
