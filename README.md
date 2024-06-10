@@ -11,4 +11,4 @@
 3. Tunggu Hingga seluruh package terdownload
 
 ## Menjalankan Web
-1. Jalankan perintah `npm run start-dev`
+1. Jalankan perintah berikut pada terminal visual studio code `npm run start-dev` 
