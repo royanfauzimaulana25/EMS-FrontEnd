@@ -46,15 +46,15 @@
                         <h2 class="title fw-bold fs-1">Buat Akun Pendaftar</h1>
                             <p class="text fs-3">Isi informasi akun kamu dulu ya.</p>
 
-                            <form class="mt-5">
+                            <form class="mt-5" id="register-account" method="post" action="http://127.0.0.1:8000/register/" enctype="multipart/form-data">
                                 <div class="form-floating mb-3 primary">
                                     <input type="email" class="form-control" id="email"
-                                        placeholder="youremail@mail.com" required>
+                                        placeholder="youremail@mail.com" name="username" required>
                                     <label for="email" class="">Email address</label>
                                 </div>
                                 <div class="form-floating mb-3 primary">
                                     <input type="password" class="form-control " id="password"
-                                        placeholder="youremail@mail.com" required>
+                                        placeholder="youremail@mail.com" name="password" required>
                                     <label for="password">Password</label>
                                 </div>
                                 <div class="form-floating mb-3 primary">
