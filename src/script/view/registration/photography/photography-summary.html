@@ -15,22 +15,22 @@
     <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body>
+<body id="body">
     <!--  Header  -->
-    <header>
+    <header id="header">
         <nav class="navbar navbar-expand-md py-4 rounded-bottom shadow">
             <div class="container-fluid px-5">
                 <span class="navbar-brand-sm">
                     <img src="/Horizontal Logo.png" class="img" alt="Logo Brand" style="width: 15vw;">
                 </span>
-
-                <div class="row justify-content-end">
+                
+                <div class="row justify-content-end" >
                     <div class="col-8 text-end">
                         <div class="row">
-                            <p class="title fw-bold">Person name</p>
+                            <p class="title fw-bold" id="person-name"></p>
                         </div>
                         <div class="row">
-                            <a href="#">Logout</a>
+                            <a id="logout" href="#">Logout</a>
                         </div>
                     </div>
                     <div class="col-2 align-content-center">
@@ -42,7 +42,7 @@
     </header>
 
     <!-- Main Content -->
-    <main>
+    <main id="photography">
         <div class="container my-5">
             <div class="row align-content-center">
                 <div class="col ">
@@ -52,7 +52,7 @@
                 </div>
             </div>
 
-            <div class="container my-5">
+            <div class="container my-5" id="bukti">
                 <div class="row align-content-center ">
                     <div class="col">
                         <div class="row text-bg-dark p-4 rounded">
@@ -61,43 +61,44 @@
                                 <tr>
                                     <td class="fw-bold">ID Pendaftaran</td>
                                     <td class="fw-bold">Waktu Pendaftaran</td>
-                                    <td rowspan="8" class="align-middle align-center" align="center"><img src="/Sample Image.png"></td>
+                                    <td rowspan="8" class="align-middle align-center" align="center" id="pas_photo"></td>
                                 </tr>
                                 <tr>
-                                    <td>1897213573</td>
-                                    <td>18/02/2008</td>
+                                    <td id="id_pendaftaran"></td>
+                                    <td id="date"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Jenjang Sekolah</td>
                                     <td class="fw-bold">Asal Sekolah</td>
                                 </tr>
                                 <tr>
-                                    <td>Sekolah Menengah Pertama / SLTP</td>
-                                    <td>SMPN 25 Bandar Lampung</td>
+                                    <td id="jenjang_sekolah"></td>
+                                    <td id="asal_sekolah"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Nama Lengkap Peserta</td>
                                     <td class="fw-bold">No Telp Peserta</td>
                                 </tr>
                                 <tr>
-                                    <td>Benyamin Busuari</td>
-                                    <td>0896123571</td>
+                                    <td id="nama_lengkap"></td>
+                                    <td id="no_telp"></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="3" class="fw-bold">Alamat Peserta</td>
+                                    <td colspan="3" class="fw-bold" >Alamat Peserta</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="3" >Jl. Dr Cipto Mangunkusumo Gang Rajawali Bandar Lampung Lampung Indonesia</td>
+                                    <td colspan="3" id="alamat"></td>
                                 </tr>
                                 <hr>
                             </table>
                         </div>
                     </div>
                 </div>
+                <p class="text" id="verified">*This Document was auto-generated and has been verified by Authorized Organizer</p>
 
                 <div class="row mt-5 text-center">
                     <div class="col">
-                        <button type="button" class="btn btn-outline-primary fw-bold ">Download Bukti Pendaftaran</button>
+                        <button type="button"  class="btn btn-outline-primary fw-bold" id="download-photography">Download Bukti Pendaftaran</button>
                     </div>
                 </div>
 

@@ -1,0 +1,64 @@
+// const baseUrl = "http://127.0.0.1:8000";
+
+// class EMSApi {    
+//     // Add Account Registration
+//     static async addAccount(data) {
+//         const response = await fetch(`${baseUrl}/register/`, {
+//             method: "POST",
+//             body: data,
+//         });
+
+//         return response.json();
+
+//     };  
+
+//     // Check Account Verification
+//     static async login(data) {
+//         const response = await fetch(`${baseUrl}/login/`, {
+//             method: "POST",
+//             body: data,
+//         });
+
+//         return response.json();
+//     };    
+
+//     // add Photography Registration
+//     static async addPhotography(data) {
+//         const response = await fetch(`${baseUrl}/photography/`, {
+//             method: "POST",
+//             body: data,
+//         });
+
+//         return response.json();
+//     };
+
+//     // Get Jenjang Sekolah 
+//     static async getJenjang() {
+//         const response = await fetch(`${baseUrl}/jenjang/`, {
+//             method: "GET"
+//         });
+
+//         return response.json();
+//     };
+
+//     // Get Sekolah 
+//     static async getSekolah(id) {
+//         const response = await fetch(`${baseUrl}/sekolah/?id=${id}`, {
+//             method: "GET"
+//         });
+
+//         return response.json();
+//     };
+
+//     // Post CheckOut Page 
+//     static async getSekolah(id) {
+//         const response = await fetch(`${baseUrl}/sekolah/?id=${id}`, {
+//             method: "GET"
+//         });
+
+//         return response.json();
+//     };
+// }
+
+// export default EMSApi;
+// import { Buffer } from "buffer/";

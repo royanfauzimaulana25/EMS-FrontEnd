@@ -15,22 +15,22 @@
     <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body>
+<body id="body">
     <!--  Header  -->
-    <header>
+    <header id="header">
         <nav class="navbar navbar-expand-md py-4 rounded-bottom shadow">
             <div class="container-fluid px-5">
                 <span class="navbar-brand-sm">
                     <img src="/Horizontal Logo.png" class="img" alt="Logo Brand" style="width: 15vw;">
                 </span>
-
-                <div class="row justify-content-end">
+                
+                <div class="row justify-content-end" >
                     <div class="col-8 text-end">
                         <div class="row">
-                            <p class="title fw-bold">Person name</p>
+                            <p class="title fw-bold" id="person-name"></p>
                         </div>
                         <div class="row">
-                            <a href="#">Logout</a>
+                            <a id="logout" href="#">Logout</a>
                         </div>
                     </div>
                     <div class="col-2 align-content-center">
@@ -42,7 +42,7 @@
     </header>
 
     <!-- Main Content -->
-    <main>
+    <main id="basketball">
         <div class="container my-5">
             <div class="row align-content-center">
                 <div class="col ">
@@ -53,7 +53,7 @@
             </div>
 
             <div class="container my-5">
-                <div class="row align-content-center ">
+                <div class="row align-content-center " id="test">
                     <div class="col">
                         <div class="row text-bg-dark p-4 rounded">
                             <h3 class="fw-bold  text-primary text-center my-5">Ringkasan Pendaftaran</h3>
@@ -66,32 +66,32 @@
                                     <td class="fw-bold">Waktu Pendaftaran</td>
                                 </tr>
                                 <tr>
-                                    <td>1897213573</td>
-                                    <td>18/02/2008</td>
+                                    <td id="id_pendaftaran"></td>
+                                    <td id="date"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Jenjang Sekolah</td>
                                     <td class="fw-bold">Asal Sekolah</td>
                                 </tr>
                                 <tr>
-                                    <td>Sekolah Menengah Pertama / SLTP</td>
-                                    <td>SMPN 25 Bandar Lampung</td>
+                                    <td id="jenjang_sekolah"></td>
+                                    <td id="asal_sekolah"></td>
                                 </tr>
                                 <tr>
-                                    <td class="fw-bold">Nama Pelatih</td>
-                                    <td class="fw-bold">Kategori Tim</td>
+                                    <td class="fw-bold" >Nama Pelatih</td>
+                                    <td class="fw-bold" >Kategori Tim</td>
                                 </tr>
                                 <tr>
-                                    <td>Benyamin Busuari</td>
-                                    <td>Putra</td>
+                                    <td id="pelatih"></td>
+                                    <td id="kategori"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Nama Official</td>
                                     <td class="fw-bold">No Telp Tim</td>
                                 </tr>
                                 <tr>
-                                    <td>Benyamin Busuari</td>
-                                    <td>0896123571</td>
+                                    <td id="official"></td>
+                                    <td id="no_telp"></td>
                                 </tr>
                             </table>
 
@@ -101,17 +101,17 @@
                                 <tr>
                                     <td class="fw-bold">Nama Lengkap Peserta</td>
                                     <td class="fw-bold">No Punggung Peserta</td>
-                                    <td rowspan="4" class="align-middle align-center" align="center"><img src="/Sample Image.png" width="200px"></td>
+                                    <td rowspan="4" class="align-middle align-center" align="center" id="pas_photo_1"><img src="/Sample Image.png" width="200px"></td>
                                 </tr>
                                 <tr>
-                                    <td>Budi Sucapmiko</td>
-                                    <td>10</td>
+                                    <td id="nama_1"></td>
+                                    <td id="no_punggung_1"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold" colspan="2">Alamat Peserta</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2">Jl. Dr Cipto Mangunkusumo Gang Rajawali Bandar Lampung Lampung Indonesia</td>
+                                    <td colspan="2" id="alamat_1">Jl. Dr Cipto Mangunkusumo Gang Rajawali Bandar Lampung Lampung Indonesia</td>
                                 </tr>
                             </table>
 
@@ -121,17 +121,17 @@
                                 <tr>
                                     <td class="fw-bold">Nama Lengkap Peserta</td>
                                     <td class="fw-bold">No Punggung Peserta</td>
-                                    <td rowspan="4" class="align-middle align-center" align="center"><img src="/Sample Image.png" width="200px"></td>
+                                    <td rowspan="4" class="align-middle align-center" align="center" id="pas_photo_2"><img src="/Sample Image.png" width="200px"></td>
                                 </tr>
                                 <tr>
-                                    <td>Budi Sucapmiko</td>
-                                    <td>10</td>
+                                    <td id="nama_2"></td>
+                                    <td id="no_punggung_2"></td>
                                 </tr>
                                 <tr>
-                                    <td class="fw-bold" colspan="2">Alamat Peserta</td>
+                                    <td class="fw-bold" colspan="2" >Alamat Peserta</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2">Jl. Dr Cipto Mangunkusumo Gang Rajawali Bandar Lampung Lampung Indonesia</td>
+                                    <td colspan="2" id="alamat_2"></td>
                                 </tr>
                             </table>
 
@@ -141,17 +141,17 @@
                                 <tr>
                                     <td class="fw-bold">Nama Lengkap Peserta</td>
                                     <td class="fw-bold">No Punggung Peserta</td>
-                                    <td rowspan="4" class="align-middle align-center" align="center"><img src="/Sample Image.png" width="200px"></td>
+                                    <td rowspan="4" class="align-middle align-center" align="center" id="pas_photo_3"><img src="/Sample Image.png" width="200px"></td>
                                 </tr>
                                 <tr>
-                                    <td>Budi Sucapmiko</td>
-                                    <td>10</td>
+                                    <td id="nama_3"></td>
+                                    <td id="no_punggung_3"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold" colspan="2">Alamat Peserta</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2">Jl. Dr Cipto Mangunkusumo Gang Rajawali Bandar Lampung Lampung Indonesia</td>
+                                    <td colspan="2" id="alamat_3"></td>
                                 </tr>
                             </table>
 
@@ -161,27 +161,28 @@
                                 <tr>
                                     <td class="fw-bold">Nama Lengkap Peserta</td>
                                     <td class="fw-bold">No Punggung Peserta</td>
-                                    <td rowspan="4" class="align-middle align-center" align="center"><img src="/Sample Image.png" width="200px"></td>
+                                    <td rowspan="4" class="align-middle align-center" align="center" id="pas_photo_4"><img src="/Sample Image.png" width="200px"></td>
                                 </tr>
                                 <tr>
-                                    <td>Budi Sucapmiko</td>
-                                    <td>10</td>
+                                    <td id="nama_4"></td>
+                                    <td id="no_punggung_4"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold" colspan="2">Alamat Peserta</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2">Jl. Dr Cipto Mangunkusumo Gang Rajawali Bandar Lampung Lampung Indonesia</td>
+                                    <td colspan="2" id="alamat_4">Jl. Dr Cipto Mangunkusumo Gang Rajawali Bandar Lampung Lampung Indonesia</td>
                                 </tr>
                             </table>
                         </div>
                     </div>
                 </div>
                 
+                <p class="text" id="verified">*This Document was auto-generated and has been verified by Authorized Organizer</p>
 
                 <div class="row mt-5 text-center">
                     <div class="col">
-                        <button type="button" class="btn btn-outline-primary fw-bold ">Download Bukti Pendaftaran</button>
+                        <button type="button" class="btn btn-outline-primary fw-bold " id="download-basketball">Download Bukti Pendaftaran</button>
                     </div>
                 </div>
 

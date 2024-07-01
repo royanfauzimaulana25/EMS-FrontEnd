@@ -46,15 +46,14 @@
                         <h2 class="title fw-bold fs-1">Masuk Ke Halaman Pendaftar</h1>
                             <p class="text fs-3">Masukan informasi akun kamu dulu ya.</p>
 
-                            <form class="mt-5">
+                            <form class="mt-5" id="login-form">
                                 <div class="form-floating mb-3 primary">
-                                    <input type="email" class="form-control" id="email"
-                                        placeholder="youremail@mail.com" required>
+                                    <input type="email" class="form-control" id="email" placeholder="youremail@mail.com" name="username"  required>
                                     <label for="email" class="">Email address</label>
                                 </div>
                                 <div class="form-floating mb-3 primary">
                                     <input type="password" class="form-control " id="password"
-                                        placeholder="youremail@mail.com" required>
+                                        placeholder="youremail@mail.com" name="password" required>
                                     <label for="password">Password</label>
                                 </div>
 
@@ -67,18 +66,47 @@
                                         <a href="">Lupa Password ?</a>
                                     </div>
                                 </div>
-                                <button type="submit"
+                                <button id="login-button" type="submit"
                                     class="form-control btn btn-primary fs-5 fw-bold px-5 py-3 justify-self-end">Login</button>
 
-                                <p class="text-center mt-5">Lupa Password ?
-                                    <a href="" class="fw-bold">Reset Passwordmu Disini.</a>
-                                </p>
                             </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal-success" tabindex="-1" role="dialog" data-bs-backdrop="static"
+        data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center p-lg-4">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2" width="20%">
+                        <circle class="path circle" fill="none" stroke="#198754" stroke-width="6" stroke-miterlimit="10"
+                            cx="65.1" cy="65.1" r="62.1" />
+                        <polyline class="path check" fill="none" stroke="#198754" stroke-width="6"
+                            stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
+                    </svg>
+                    <h4 class="text-success mt-3">Succes!</h4>
+                    <p class="mt-3">Akun Berhasil Dibuat</p>
+                    <a class="btn btn-primary" href="login.html">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toasts -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">            
+            <strong class="me-auto" id="toast-title"></strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body"></div>
+        </div>
+      </div>
+
 </body>
 
 </html>

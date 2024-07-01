@@ -2,6 +2,7 @@ const path = require("path");
 const autoprefixer = require('autoprefixer')
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const webpack = require('webpack');
 
 const htmlWebpackPluginConfig = {
   meta: {
@@ -46,6 +47,11 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    fallback: {
+      buffer: require.resolve("buffer/"), 
+    },
+  },
   plugins: [
     // Home Page
     new HtmlWebpackPlugin({
@@ -66,6 +72,22 @@ module.exports = {
       title: 'Registration Page',
       filename: 'auth/registration.html',
       template: path.resolve(__dirname, 'src/script/view/auth/registration.html'),
+      ...htmlWebpackPluginConfig,
+    }),
+    
+    // Administrator
+    new HtmlWebpackPlugin({
+      title: 'Administrator',
+      filename: 'admin/index.html',
+      template: path.resolve(__dirname, 'src/script/view/admin/index.html'),
+      ...htmlWebpackPluginConfig,
+    }),
+
+    // Penanggung Jawab
+    new HtmlWebpackPlugin({
+      title: 'Penanggung Jawab',
+      filename: 'pj/index.html',
+      template: path.resolve(__dirname, 'src/script/view/pj/index.html'),
       ...htmlWebpackPluginConfig,
     }),
 
@@ -111,6 +133,10 @@ module.exports = {
       filename: 'payment/index.html',
       template: path.resolve(__dirname, 'src/script/view/payment/index.html'),
       ...htmlWebpackPluginConfig,
+    }),
+    
+    new webpack.ProvidePlugin({
+      Buffer: ["buffer", "Buffer"],
     }),
 
     new CopyWebpackPlugin({
