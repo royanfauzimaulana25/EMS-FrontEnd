@@ -27,15 +27,21 @@ const login = () => {
             console.log(response);
             var message = response.details;
             var status = response.status;
-            ToastLogin(status, message);
-
+            console.log(status);
             await setTimeout(() => {
-                if (status = 'success') {
+                if (status == 'success') {
+                    ToastLogin(status, message);
                     localStorage.setItem('uuid', response.data[0]);
                     localStorage.setItem('user', response.data[1]);
                     window.location.href = response.redirect;
-                };
-            },3000);            
+                } else  {
+                    ToastLogin(status, message);
+                    loginButton.disabled = false;
+                    loginButton.innerHTML = `
+                                   Login
+                                `;
+                } ;
+            },2000);            
             
         } catch (error) {
             console.error(error);

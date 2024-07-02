@@ -3,7 +3,7 @@ import { Xendit, Invoice as InvoiceClient } from 'xendit-node';
 
 const secretKey = "xnd_development_iKIA243m0jo05ZqseUT1M5pPgem6R3Jhe1zYXnE7IESu886VTUB9O9cPNevRN:";
 const authToken = Buffer.from(secretKey).toString("Base64");
-const baseUrl = "http://127.0.0.1:8000";
+const baseUrl = "https://ems-backend-production.up.railway.app";
 
 
 class EMSApi {
@@ -48,6 +48,16 @@ class EMSApi {
         }
     }
 
+    // Get Basketball Count
+    static async getPhotographyCount() {
+        try {
+            const response = await axios.get(`${baseUrl}/photography/count`);
+            return response.data;
+        } catch (error) {
+            return error;
+        }
+    }
+
     // Add Basketball Registration
     static async addBasketball(data) {
         try {
@@ -63,6 +73,16 @@ class EMSApi {
     static async getBasketball(data) {
         try {
             const response = await axios.get(`${baseUrl}/basketball/?id_user=${data}`);
+            return response.data;
+        } catch (error) {
+            return error;
+        }
+    }
+    
+    // Get Basketball Count
+    static async getBasketballCount() {
+        try {
+            const response = await axios.get(`${baseUrl}/basketball/count`);
             return response.data;
         } catch (error) {
             return error;
@@ -93,6 +113,16 @@ class EMSApi {
     static async getLomba(id) {
         try {
             const response = await axios.get(`${baseUrl}/lomba/?id=${id}`);
+            return response.data;
+        } catch (error) {
+            return error;
+        }
+    }
+
+    // Get Lomba all 
+    static async getLombaAll() {
+        try {
+            const response = await axios.get(`${baseUrl}/lomba/all`);
             return response.data;
         } catch (error) {
             return error;
