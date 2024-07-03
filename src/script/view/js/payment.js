@@ -37,7 +37,7 @@ const payment = () => {
             console.log(response);
             ModalSucces();
             await setTimeout(() => {
-                window.location.href = response;
+                window.location.href = response.invoice_url;
             },3000); 
             
         } catch (error) {
