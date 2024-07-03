@@ -54,6 +54,7 @@ const photographyRegistration = () => {
     // Show Jenjang Sekolah 
     const showJenjang = async () => {
         let response = await EMSApi.getJenjang();
+        console.log(response);
         for (let item in response.data){
             const option = document.createElement('option');
             

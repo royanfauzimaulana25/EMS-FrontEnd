@@ -27,7 +27,7 @@ const login = () => {
             console.log(response);
             var message = response.details;
             var status = response.status;
-            console.log(status);
+            console.log(response);
             await setTimeout(() => {
                 if (status == 'success') {
                     ToastLogin(status, message);
