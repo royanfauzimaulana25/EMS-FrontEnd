@@ -85,9 +85,15 @@ module.exports = {
 
     // Penanggung Jawab
     new HtmlWebpackPlugin({
-      title: 'Penanggung Jawab',
-      filename: 'pj/index.html',
-      template: path.resolve(__dirname, 'src/script/view/pj/index.html'),
+      title: 'Penanggung Jawab - Photography',
+      filename: 'pj/photography-pj.html',
+      template: path.resolve(__dirname, 'src/script/view/pj/photography-pj.html'),
+      ...htmlWebpackPluginConfig,
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Penanggung Jawab - Basketball',
+      filename: 'pj/basketball-pj.html',
+      template: path.resolve(__dirname, 'src/script/view/pj/basketball-pj.html'),
       ...htmlWebpackPluginConfig,
     }),
 

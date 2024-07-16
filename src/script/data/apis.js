@@ -4,6 +4,7 @@ import { Xendit, Invoice as InvoiceClient } from 'xendit-node';
 const secretKey = "xnd_development_iKIA243m0jo05ZqseUT1M5pPgem6R3Jhe1zYXnE7IESu886VTUB9O9cPNevRN:";
 const authToken = Buffer.from(secretKey).toString("Base64");
 const baseUrl = "https://ems-backend-production.up.railway.app";
+// const baseUrl = "http://127.0.0.1:8000";
 
 
 class EMSApi {
@@ -18,10 +19,53 @@ class EMSApi {
         }
     }
 
+    // Add Account Penanggung Jawab
+    static async addPJ(data) {
+        try {
+            const response = await axios.post(`${baseUrl}/register/pj`, data);
+            return response.data; // Axios automatically parses JSON
+        } catch (error) {
+            // Handle errors (e.g., network issues, server errors)
+            return error; // Or return a custom error object
+        }
+    }
+
+    // Delete Account Penanggung Jawab
+    static async deletePJ(uuid) {
+        try {
+            const response = await axios.delete(`${baseUrl}/register/pj?uuid=${uuid}`);
+            return response.data; // Axios automatically parses JSON
+        } catch (error) {
+            // Handle errors (e.g., network issues, server errors)
+            return error; // Or return a custom error object
+        }
+    }
+
+    // Edit Account Penanggung Jawab
+    static async editPJ(data) {
+        try {
+            const response = await axios.put(`${baseUrl}/register/pj`, data);
+            return response.data; // Axios automatically parses JSON
+        } catch (error) {
+            // Handle errors (e.g., network issues, server errors)
+            return error; // Or return a custom error object
+        }
+    }
+
     // Check Account Verification (Login)
     static async login(data) {
         try {
             const response = await axios.post(`${baseUrl}/login/`, data);
+            return response.data;
+        } catch (error) {
+            return error;
+        }
+    }
+
+    // Get Basketball Summary
+    static async getPenanggungJawab() {
+        try {
+            const response = await axios.get(`${baseUrl}/register/pj`);
             return response.data;
         } catch (error) {
             return error;
@@ -42,6 +86,16 @@ class EMSApi {
     static async getPhotography(data) {
         try {
             const response = await axios.get(`${baseUrl}/photography/?id_user=${data}`);
+            return response.data;
+        } catch (error) {
+            return error;
+        }
+    }
+
+    // Get Photography Data All
+    static async getPhotographyAll() {
+        try {
+            const response = await axios.get(`${baseUrl}/photography/all/`);
             return response.data;
         } catch (error) {
             return error;
@@ -129,6 +183,16 @@ class EMSApi {
         }
     }
 
+    // Update Lomba  
+    static async updateLomba(data) {
+        try {
+            const response = await axios.put(`${baseUrl}/lomba/`,data);
+            return response.data;
+        } catch (error) {
+            return error;
+        }
+    }
+
     static async createInvoice(data) {
         const checkoutData = {
             external_id: data['uuid'], // Your unique identifier
@@ -146,10 +210,9 @@ class EMSApi {
             const response = await axios.post(
                 "https://api.xendit.co/v2/invoices", checkoutData, { headers }
             );
-            // const checkoutUrl = response.data.invoice_url;
+            
             const data = response.data;
             return data;
-            console.log("Checkout page URL:", checkoutUrl);
             // Redirect the user to the checkoutUrl or display it in your UI
         } catch (error) {
             console.log("Error creating checkout page:", error.response ? error.response.data : error.message);

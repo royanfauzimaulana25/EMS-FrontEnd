@@ -16,6 +16,8 @@
 </head>
 
 <body>
+    <div id="modal-container"></div>
+
     <!--  Header  -->
     <header>
         <nav class="navbar navbar-expand-md py-4 rounded-bottom shadow">
@@ -53,7 +55,7 @@
             <div class="row align-items-center">
                 <div class="col bg-white shadow m-5 p-5 px-5 text-center rounded">
                   <div class="fs-3 fw-bold bg-primary text-white p-2 rounded ">Pendaftar Photography</div>
-                  <div class="fs-1 my-5 text-primary fw-bold">100</div>
+                  <div class="fs-1 my-5 text-primary fw-bold" id="photography-count">0</div>
                   <div class="fs-3">Orang</div>
                 </div>
                 
@@ -66,38 +68,14 @@
                             <th scope="col">No</th>
                             <th scope="col">ID Pendaftaran</th>
                             <th scope="col">Waktu Daftar</th>
+                            <th scope="col">Nama Peserta</th>
                             <th scope="col">Asal Sekolah</th>
                             <th scope="col">Surat Tugas</th>
                             <th scope="col">No Telp</th>
                             <th scope="col">Aksi</th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Basketball Competition</td>
-                            <td>2024-06-29</td>
-                            <td>SMPN 25 Bandar Lampung</td>
-                            <td><a href="" class="btn btn-outline-primary"> Lihat File</a></td>
-                            <td>0896767677</td>
-                            <td class="text-center">
-                                <a href="" class="btn btn-outline-primary"> Lihat Details</a>
-                            </td>
-                          </tr>
-
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Photography Competition</td>
-                            <td>2024-06-29</td>
-                            <td>SMPN 25 Bandar Lampung</td>
-                            <td><a href="" class="btn btn-outline-primary"> Lihat File</a></td>
-                            <td>0896767677</td>
-                            <td class="text-center">
-                                <a href="" class="btn btn-outline-primary"> Lihat Details</a>
-                            </td>
-                          </tr>
-                          
-                          </tr>                          
+                        <tbody id="body-table-kelola-lomba">                        
                         </tbody>
                       </table>
                 </div>
@@ -135,6 +113,8 @@
             <div class="toast-body"></div>
         </div>
     </div>
+
+
 </body>
 
 </html>

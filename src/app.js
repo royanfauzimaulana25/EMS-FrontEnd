@@ -8,6 +8,8 @@ import registration from './script/view/js/registration.js';
 import account from './script/view/js/account.js';
 
 import administrator from './script/view/js/administrator.js';
+import penanggung_jawab_photography from './script/view/js/pj-photography.js';
+import penanggung_jawab_basketball from './script/view/js/pj-basketball.js';
 
 
 import photographyRegistration from './script/view/js/photography-registration.js';
@@ -26,6 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
   account();
 
   administrator();
+  penanggung_jawab_photography();
+  penanggung_jawab_basketball();
 
   photographyRegistration();
   photographySummary();

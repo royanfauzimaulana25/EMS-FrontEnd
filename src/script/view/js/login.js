@@ -28,20 +28,20 @@ const login = () => {
             var message = response.details;
             var status = response.status;
             console.log(response);
-            await setTimeout(() => {
-                if (status == 'success') {
-                    ToastLogin(status, message);
-                    localStorage.setItem('uuid', response.data[0]);
-                    localStorage.setItem('user', response.data[1]);
-                    window.location.href = response.redirect;
-                } else  {
-                    ToastLogin(status, message);
-                    loginButton.disabled = false;
-                    loginButton.innerHTML = `
-                                   Login
-                                `;
-                } ;
-            },2000);            
+            if (status == 'success') {
+                ToastLogin(status, message);
+                localStorage.setItem('uuid', response.data[0]);
+                localStorage.setItem('user', response.data[1]);
+                await setTimeout(() => {
+                    window.location.href = response.redirect;                
+                },3000);  
+            } else  {
+                ToastLogin(status, message);
+                loginButton.disabled = false;
+                loginButton.innerHTML = `
+                               Login
+                            `;
+            } ;                    
             
         } catch (error) {
             console.error(error);
