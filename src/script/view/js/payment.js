@@ -34,7 +34,6 @@ const payment = () => {
                 competition : lomba.toLowerCase()
             }
             let response = await EMSApi.createInvoice(data); 
-            console.log(response);
             ModalSucces();
             await setTimeout(() => {
                 window.location.href = response.invoice_url;
@@ -102,15 +101,16 @@ const payment = () => {
 
     // Event Handler ======================================================
     // Registration
-    if (PaymentButton) {
-        PaymentButton.addEventListener("click", addPaymentHandler);
-    };
-
     if(ItemElement){
         let id_user = localStorage.getItem('uuid');
         getCompetition(id_user);
         checkInvoiceStatus();
     }
+
+    if (PaymentButton) {
+        PaymentButton.addEventListener("click", addPaymentHandler);
+    };
+
 
 };
 

@@ -132,6 +132,16 @@ class EMSApi {
             return error;
         }
     }
+
+    // Get Basketball All
+    static async getBasketballAll() {
+        try {
+            const response = await axios.get(`${baseUrl}/basketball/all`);
+            return response.data;
+        } catch (error) {
+            return error;
+        }
+    }
     
     // Get Basketball Count
     static async getBasketballCount() {

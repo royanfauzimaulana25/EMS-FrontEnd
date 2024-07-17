@@ -18,24 +18,24 @@ const penanggung_jawab_basketball = async () => {
     let count = 1;
     
     for (let item in response.data) {
-      console.log(response.data[0]);
       let id_pendaftaran = response.data[item].id_pendaftaran;
       let date = response.data[item].date;
-      let jenjang_sekolah = response.data[item].jenjang_sekolah;
+      let jenjang_sekolah = response.data[item].jenjang;
       let nama_sekolah = response.data[item].nama_sekolah;
-      let no_telp = response.data[item].no_telp;
-      let nama_peserta = response.data[item].nama_peserta;
-      let alamat_peserta = response.data[item].alamat_peserta;
-      let pas_photo = response.data[item].pas_photo;
+      let nama_tim = response.data[item].nama_tim;
+      let pelatih = response.data[item].pelatih;
+      let official = response.data[item].official;
+      let kategori_tim = response.data[item].kategori_tim;
       let surat_tugas = response.data[item].surat_tugas;
-      let kartu_pelajar = response.data[item].kartu_pelajar;
+      let no_telp = response.data[item].no_telp;
+      let member = response.data[item].member;
 
       bodyTable.innerHTML += `
                             <tr>
-                            <th scope="row">${count}</th>
+                            <th scope="row">${count++}</th>
                             <td>${id_pendaftaran}</td>
                             <td>${date}</td>
-                            <td>${nama_peserta}</td>
+                            <td>${nama_tim}</td>
                             <td>${nama_sekolah}</td>
                             <td><button type="button"
                                     class="btn btn-outline-primary"
@@ -54,13 +54,23 @@ const penanggung_jawab_basketball = async () => {
                             </td>
                           </tr>
                                 `;
+     let footer = `
+            <button
+                    type="button"
+                    class="btn btn-danger"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+            `;
 
-      let content = `
-          <table class="table table-borderless fs-5">
+       let content_wrapper = `
+        <h5 class="fw-bold  text-primary">General Information</h5>
+                            <hr>
+                            <table class="table table-borderless fs-5">
                                 <tr>
                                     <td class="fw-bold">ID Pendaftaran</td>
                                     <td class="fw-bold">Waktu Pendaftaran</td>
-                                    <td rowspan="4" class="align-middle align-center" align="center" id="pas_photo"><img class="rounded" src="${pas_photo}" height= 200vh></td>
                                 </tr>
                                 <tr>
                                     <td id="id_pendaftaran">${id_pendaftaran}</td>
@@ -69,48 +79,64 @@ const penanggung_jawab_basketball = async () => {
                                 <tr>
                                     <td class="fw-bold">Jenjang Sekolah</td>
                                     <td class="fw-bold">Asal Sekolah</td>
-                                    
                                 </tr>
                                 <tr>
                                     <td id="jenjang_sekolah">${jenjang_sekolah}</td>
                                     <td id="asal_sekolah">${nama_sekolah}</td>
                                 </tr>
                                 <tr>
-                                    <td class="fw-bold">Nama Lengkap Peserta</td>
-                                    <td class="fw-bold">No Telp Peserta</td>
+                                    <td class="fw-bold" >Nama Pelatih</td>
+                                    <td class="fw-bold" >Kategori Tim</td>
                                 </tr>
                                 <tr>
-                                    <td id="nama_lengkap">${nama_peserta}</td>
+                                    <td id="pelatih">${pelatih}</td>
+                                    <td id="kategori">${kategori_tim}</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">Nama Official</td>
+                                    <td class="fw-bold">No Telp Tim</td>
+                                </tr>
+                                <tr>
+                                    <td id="official">${official}</td>
                                     <td id="no_telp">${no_telp}</td>
-                                    <td rowspan="3" class="align-middle align-center" align="center" id="kartu_pelajar"><img class="rounded" src="${kartu_pelajar}" height= 200vh></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3" class="fw-bold" >Alamat Peserta</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3" id="alamat">${alamat_peserta}</td>
                                 </tr>
                             </table>
-          `;
+       `
+    let counter = 1;
+    for (let member_data in member) {
+        let content = `
+            <h5 class="fw-bold  text-primary mt-4">Team Member ${counter++} Information</h5>
+                            <hr>
+                            <table class="table table-borderless  fs-5">
+                                <tr>
+                                    <td class="fw-bold">Nama Lengkap Peserta</td>
+                                    <td class="fw-bold">No Punggung Peserta</td>
+                                    <td rowspan="2" class="align-middle align-center" align="center" id="pas_photo_${counter}"><img src="${member[member_data].pas_photo}" width="150vh"></td>
+                                </tr>
+                                <tr>
+                                    <td id="nama_${counter}">${member[member_data].nama_lengkap}</td>
+                                    <td id="no_punggung_${counter}">${member[member_data].no_punggung}</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold" colspan="2" >Alamat Peserta</td>
+                                    <td rowspan="2" class="align-middle align-center" align="center" id="kartu_pelajar_${counter}"><img src="${member[member_data].kartu_pelajar}" width="200vh"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" id="alamat_${counter}">${member[member_data].alamat}</td>
+                                </tr>
+                            </table>
+            `;
+            content_wrapper += content ;
+    }
 
-      let footer = `
-          <button
-                  type="button"
-                  class="btn btn-danger"
-                  data-bs-dismiss="modal"
-                >
-                  Close
-                </button>
-          `;
-      
-      //  Modal Detail
-      await createModal(
-        id_pendaftaran,
-        "Detail Pendaftaran ",
-        content,
-        footer
-      );
-
+    //  Modal Detail
+    await createModal(
+      id_pendaftaran,
+      "Detail Pendaftaran ",
+      content_wrapper,
+      footer
+    )
+        
       let content_surat = `
           <iframe src="${surat_tugas}" width="100%" height="500px"></iframe>
           `;
