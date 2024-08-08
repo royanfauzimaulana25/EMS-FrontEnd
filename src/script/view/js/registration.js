@@ -5,7 +5,6 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 const registration = () => {
     // Get Element ======================================================
     const RegistrationForm = document.getElementById("register-form");
-    const LoginForm = document.getElementById("login-form");
 
 
     // Function =========================================================

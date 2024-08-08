@@ -62,7 +62,7 @@ class EMSApi {
         }
     }
 
-    // Get Basketball Summary
+    // Get PJ Data
     static async getPenanggungJawab() {
         try {
             const response = await axios.get(`${baseUrl}/register/pj`);
@@ -72,10 +72,20 @@ class EMSApi {
         }
     }
 
-    // Add Photography Registration
-    static async addPhotography(data) {
+    // Get PJ Data
+    static async getPJRole(uuid) {
         try {
-            const response = await axios.post(`${baseUrl}/photography/`, data);
+            const response = await axios.get(`${baseUrl}/pj/role/?uuid=${uuid}`);
+            return response.data;
+        } catch (error) {
+            return error;
+        }
+    }
+
+    // Add Photography Registration
+    static async addSingle(data) {
+        try {
+            const response = await axios.post(`${baseUrl}/single/`, data);
             return response.data;
         } catch (error) {
             return error;
@@ -83,9 +93,9 @@ class EMSApi {
     }
 
     // Get Photography Summary
-    static async getPhotography(data) {
+    static async getSingle(data) {
         try {
-            const response = await axios.get(`${baseUrl}/photography/?id_user=${data}`);
+            const response = await axios.get(`${baseUrl}/single/?id_user=${data}`);
             return response.data;
         } catch (error) {
             return error;
@@ -93,70 +103,59 @@ class EMSApi {
     }
 
     // Get Photography Data All
-    static async getPhotographyAll() {
+    static async getSingleAll() {
         try {
-            const response = await axios.get(`${baseUrl}/photography/all/`);
+            const response = await axios.get(`${baseUrl}/single/all/`);
             return response.data;
         } catch (error) {
             return error;
         }
     }
-
-    // Get Basketball Count
-    static async getPhotographyCount() {
-        try {
-            const response = await axios.get(`${baseUrl}/photography/count`);
-            return response.data;
-        } catch (error) {
-            return error;
-        }
-    }
-
+   
     // Add Basketball Registration
-    static async addBasketball(data) {
+    static async addTeam(data) {
         try {
-            const response = await axios.post(`${baseUrl}/basketball/`, data);
-            return response.data;
-        } catch (error) {
-            return error;
-        }
-    }
-
-    
-    // Get Basketball Summary
-    static async getBasketball(data) {
-        try {
-            const response = await axios.get(`${baseUrl}/basketball/?id_user=${data}`);
-            return response.data;
-        } catch (error) {
-            return error;
-        }
-    }
-
-    // Get Basketball All
-    static async getBasketballAll() {
-        try {
-            const response = await axios.get(`${baseUrl}/basketball/all`);
+            const response = await axios.post(`${baseUrl}/team/`, data);
             return response.data;
         } catch (error) {
             return error;
         }
     }
     
-    // Get Basketball Count
-    static async getBasketballCount() {
+    // Get Team Summary
+    static async getTeam(data) {
         try {
-            const response = await axios.get(`${baseUrl}/basketball/count`);
+            const response = await axios.get(`${baseUrl}/team/?id_user=${data}`);
             return response.data;
         } catch (error) {
             return error;
         }
     }
 
-    // Get Jenjang Sekolah 
+    // Get Team All
+    static async getTeamAll() {
+        try {
+            const response = await axios.get(`${baseUrl}/team/all`);
+            return response.data;
+        } catch (error) {
+            return error;
+        }
+    }
+    
+       // Get Jenjang Sekolah 
     static async getJenjang() {
         try {
             const response = await axios.get(`${baseUrl}/jenjang/`);
+            return response.data;
+        } catch (error) {
+            return error;
+        }
+    }
+
+     // Get Competition 
+     static async getCountCompetition() {
+        try {
+            const response = await axios.get(`${baseUrl}/lomba/count`);
             return response.data;
         } catch (error) {
             return error;
@@ -170,6 +169,38 @@ class EMSApi {
             return response.data;
         } catch (error) {
             return error;
+        }
+    }
+
+     // Add Lomba
+     static async addLomba(data) {
+        try {
+            const response = await axios.post(`${baseUrl}/lomba/`, data);
+            return response.data; // Axios automatically parses JSON
+        } catch (error) {
+            // Handle errors (e.g., network issues, server errors)
+            return error; // Or return a custom error object
+        }
+    }
+
+    // Update Lomba  
+    static async updateLomba(data) {
+        try {
+            const response = await axios.put(`${baseUrl}/lomba/`,data);
+            return response.data;
+        } catch (error) {
+            return error;
+        }
+    }
+
+    // Delete Account Penanggung Jawab
+    static async deleteLomba(id) {
+        try {
+            const response = await axios.delete(`${baseUrl}/lomba/?id_lomba=${id}`);
+            return response.data; // Axios automatically parses JSON
+        } catch (error) {
+            // Handle errors (e.g., network issues, server errors)
+            return error; // Or return a custom error object
         }
     }
 
@@ -193,15 +224,6 @@ class EMSApi {
         }
     }
 
-    // Update Lomba  
-    static async updateLomba(data) {
-        try {
-            const response = await axios.put(`${baseUrl}/lomba/`,data);
-            return response.data;
-        } catch (error) {
-            return error;
-        }
-    }
 
     static async createInvoice(data) {
         const checkoutData = {

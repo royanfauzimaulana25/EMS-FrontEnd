@@ -5,16 +5,16 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import { jsPDF } from 'jspdf';
 
-const photography_summary = () => {
+const single_summary = () => {
     // Get Element ======================================================
-    const photographyMainElement = document.getElementById("photography");
-    const downloadButtonElement = document.getElementById("download-photography");
+    const photographyMainElement = document.getElementById("single");
+    const downloadButtonElement = document.getElementById("download-single");
     
 
     // function
     const getSummaryData = async (id) => {
-        const response = await EMSApi.getPhotography(id);
-
+        const response = await EMSApi.getSingle(id);
+        document.getElementById('lomba').innerText = response.data[8];
         document.getElementById('id_pendaftaran').innerText = response.data[0];
         document.getElementById('date').innerText = response.data[1];
 
@@ -25,7 +25,7 @@ const photography_summary = () => {
         document.getElementById('nama_lengkap').innerText = response.data[5];
         document.getElementById('no_telp').innerText = response.data[4];
         document.getElementById('alamat').innerText = response.data[6];
-        return response;
+        // return response;
     }
 
     const donwloadBuktiHandler = async (event) => {
@@ -44,7 +44,7 @@ const photography_summary = () => {
         });
         document.getElementById('verified').hidden = false;
         document.getElementById('header').hidden = true;
-        document.getElementById('download-photography').hidden = true;
+        document.getElementById('download-single').hidden = true;
 
         // Add your HTML content using doc.html() or doc.fromHTML()
         await doc.html(document.getElementById('body'), {
@@ -64,7 +64,7 @@ const photography_summary = () => {
 
         document.getElementById('verified').hidden = true;
         document.getElementById('header').hidden = false;
-        document.getElementById('download-photography').hidden = false;
+        document.getElementById('download-single').hidden = false;
     }
 
     // Event Handler
@@ -80,4 +80,4 @@ const photography_summary = () => {
 
 }
 
-export default photography_summary;
+export default single_summary;

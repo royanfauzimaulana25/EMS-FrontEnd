@@ -67,7 +67,7 @@ const payment = () => {
 
         // console.log(JSON.stringify(response) === '[]');
         if (JSON.stringify(response) !== '[]'){
-            if (response[0].status == 'SETTLED') {
+            if (response[0].status === 'Paid') {
     
                 const Data = await EMSApi.getLomba(localStorage.getItem('uuid'));
                 const price = Data.data['price']; 
@@ -83,7 +83,7 @@ const payment = () => {
                 const responsePay = await EMSApi.addPayment(info)
                 ModalSucces();
                 await setTimeout(() => {
-                    window.location.href = `http://localhost:8080/registration/${lomba}/${lomba}-summary.html`;
+                    window.location.href = `http://localhost:8080/registration/team/team-summary.html`;
                 },3000); 
     
             }

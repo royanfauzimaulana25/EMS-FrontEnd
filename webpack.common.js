@@ -85,15 +85,15 @@ module.exports = {
 
     // Penanggung Jawab
     new HtmlWebpackPlugin({
-      title: 'Penanggung Jawab - Photography',
-      filename: 'pj/photography-pj.html',
-      template: path.resolve(__dirname, 'src/script/view/pj/photography-pj.html'),
+      title: 'Penanggung Jawab - Single',
+      filename: 'pj/single-pj.html',
+      template: path.resolve(__dirname, 'src/script/view/pj/single-pj.html'),
       ...htmlWebpackPluginConfig,
     }),
     new HtmlWebpackPlugin({
-      title: 'Penanggung Jawab - Basketball',
-      filename: 'pj/basketball-pj.html',
-      template: path.resolve(__dirname, 'src/script/view/pj/basketball-pj.html'),
+      title: 'Penanggung Jawab - Team',
+      filename: 'pj/team-pj.html',
+      template: path.resolve(__dirname, 'src/script/view/pj/team-pj.html'),
       ...htmlWebpackPluginConfig,
     }),
 
@@ -106,30 +106,30 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({
-      title: 'Photography Registration',
-      filename: 'registration/photography/photography-registration.html',
-      template: path.resolve(__dirname, 'src/script/view/registration/photography/photography-registration.html'),
+      title: 'single Registration',
+      filename: 'registration/single/single-registration.html',
+      template: path.resolve(__dirname, 'src/script/view/registration/single/single-registration.html'),
       ...htmlWebpackPluginConfig,
     }),
 
     new HtmlWebpackPlugin({
-      title: 'Photography Summary',
-      filename: 'registration/photography/photography-summary.html',
-      template: path.resolve(__dirname, 'src/script/view/registration/photography/photography-summary.html'),
+      title: 'single Summary',
+      filename: 'registration/single/single-summary.html',
+      template: path.resolve(__dirname, 'src/script/view/registration/single/single-summary.html'),
       ...htmlWebpackPluginConfig,
     }),
 
     new HtmlWebpackPlugin({
-      title: 'Basketball Registration',
-      filename: 'registration/basketball/basketball-registration.html',
-      template: path.resolve(__dirname, 'src/script/view/registration/basketball/basketball-registration.html'),
+      title: 'team Registration',
+      filename: 'registration/team/team-registration.html',
+      template: path.resolve(__dirname, 'src/script/view/registration/team/team-registration.html'),
       ...htmlWebpackPluginConfig,
     }),
 
     new HtmlWebpackPlugin({
-      title: 'Basketball Summary',
-      filename: 'registration/basketball/basketball-summary.html',
-      template: path.resolve(__dirname, 'src/script/view/registration/basketball/basketball-summary.html'),
+      title: 'team Summary',
+      filename: 'registration/team/team-summary.html',
+      template: path.resolve(__dirname, 'src/script/view/registration/team/team-summary.html'),
       ...htmlWebpackPluginConfig,
     }),
 

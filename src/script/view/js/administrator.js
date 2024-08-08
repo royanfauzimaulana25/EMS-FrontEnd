@@ -4,17 +4,47 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 const administrator = async () => {
   // Get Element ======================================================
-  const counterBasketElement = document.getElementById("basket-count-admin");
-  const modalActionTambahAkunButtonElement =
-    document.getElementById("buttonAddPJ");
+  const administratorElement = document.getElementById("administrator");
+  const modalActionTambahAkunButtonElement = document.getElementById("buttonAddPJ");
+  const modalActionTambahLombaButtonElement = document.getElementById("buttonAddLomba");
 
   // Function =========================================================
   const showCounter = async () => {
-    const basketCount = await EMSApi.getBasketballCount();
-    const photoCount = await EMSApi.getPhotographyCount();
-    document.getElementById("basket-count-admin").innerText = basketCount.data;
-    document.getElementById("photography-count-admin").innerText =
-      photoCount.data;
+    const counterContainer = document.getElementById('couter-container');
+    const response = await EMSApi.getCountCompetition();
+    console.log(response);
+    for (let item in response.data) {
+      if (response.data[item]["kategori_lomba"] === "team") {
+        let content = `
+        <div class="row bg-white shadow m-5 p-5 px-5 text-center rounded">
+              <div class="fs-3 fw-bold bg-primary text-white p-2 rounded">
+                Pendaftar ${response.data[item]["nama_lomba"]}
+              </div>
+              <div
+                class="fs-1 my-5 text-primary fw-bold">
+                ${response.data[item]["jumlah_pendaftar"]}
+              </div>
+              <div class="fs-3">Tim</div>
+            </div>
+        `
+        counterContainer.innerHTML += content;
+
+      } else {
+        let content = `
+        <div class="row bg-white shadow m-5 p-5 px-5 text-center rounded">
+              <div class="fs-3 fw-bold bg-primary text-white p-2 rounded">
+                Pendaftar ${response.data[item]["nama_lomba"]}
+              </div>
+              <div
+                class="fs-1 my-5 text-primary fw-bold">
+                ${response.data[item]["jumlah_pendaftar"]}
+              </div>
+              <div class="fs-3">Peserta</div>
+            </div>
+        `
+        counterContainer.innerHTML += content;
+      }
+    }
   };
 
   const showKelolaLomba = async () => {
@@ -24,8 +54,25 @@ const administrator = async () => {
     for (let item in response.data) {
       let idLomba = response.data[item].id_lomba;
       let namaLomba = response.data[item].nama_lomba;
+      let biayaRegistrasi = response.data[item].biaya_registrasi;
       let startDate = response.data[item].start_date;
       let endtDate = response.data[item].end_date;
+      let description = response.data[item].description;
+      let kategoriLomba = response.data[item].kategori_lomba;
+
+      let kategoriLombaSelected = '';
+      if (kategoriLomba == 'single') {
+        kategoriLombaSelected = `
+                <option value="team">Team</option>
+                <option value="single" selected>Single</option>
+                `
+      } else {
+        kategoriLombaSelected = `
+                <option value="team" selected>Team</option>
+                <option value="single">Single</option>
+                `
+      };
+
       bodyTable.innerHTML += `
                         <tr>
                             <th scope="row">${count++}</th>
@@ -36,7 +83,12 @@ const administrator = async () => {
                                 <button type="button"
                                     class="btn btn-outline-primary"
                                     data-bs-toggle="modal"
-                                    data-bs-target="#modal_${idLomba}"> Ubah Jadwal
+                                    data-bs-target="#modal_${idLomba}"> Update
+                                </button>
+                                <button type="button"
+                                    class="btn btn-outline-primary"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modal_delete-${idLomba}"> Delete
                                 </button>
                             </td>
                         <tr>
@@ -44,31 +96,93 @@ const administrator = async () => {
 
       let content = `
       <form id="${idLomba}-form" class="row g-3">
-            <input type="text" name="id_lomba" id="id_lomba" hidden>
-              <div class="col-md-6">
-                <label for="date_start" class="form-label"
-                  > Tanggal Mulai Pendaftaran </label
-                >
-                <input
-                  type="date"
-                  name="date_start"
-                  id="date_start"
-                  class="form-control"
-                  value="${startDate}"
-                />
-              </div>
-              <div class="col-md-6">
-                <label for="date_end" class="form-label"
-                  >Tanggal Akhir Pendaftaran</label
-                >
-                <input
-                  type="date"
-                  name="date_end"
-                  id="date_end"
-                  class="form-control"
-                  value="${endtDate}"
-                />
-              </div>
+            <div class="col-md-6">
+                  <label for="id_lomba" class="form-label">ID Lomba</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="id_lomba"
+                    name="id_lomba"
+                    value="${idLomba}"
+                    disabled
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="nama_lomba" class="form-label">Nama Lomba</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nama_lomba"
+                    name="nama_lomba"
+                    value = "${namaLomba}"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="biaya" class="form-label">Biaya Registrasi</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="biaya"
+                    name="biaya_registrasi"
+                    value = "${biayaRegistrasi}"
+                  />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label" for="deskripsi"
+                    >Deskripsi Lomba</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="deskripsi"
+                    name="description"
+                    value = "${description}"
+                  />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label" for="start_date"
+                    >Waktu Mulai Pendaftaran</label
+                  >
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="start_date"
+                    name="date_start"
+                    value = "${startDate}"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="end_date"
+                    >Waktu Berakhir Pendaftaran</label
+                  >
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="end_date"
+                    name="date_end"
+                    value = "${endtDate}"
+                  />
+                </div>
+                
+                <div class="col-md-6">
+                  <label class="form-label" for="ilustrasi">Gambar Ilustrasi Lomba</label>
+                  <input type="file" class="form-control" id="ilustrasi" name="ilustrasi" >
+                </div>
+
+                <div class="col-md-6">
+                  <label for="kategori_lomba" class="form-label"
+                    >Kategori Lomba</label
+                  >
+                  <select
+                    id="kategori_lomba"
+                    class="form-select"
+                    name="kategori_lomba"
+                  >
+                    ${kategoriLombaSelected}
+                  </select>
+                </div>
             </form>
       `;
 
@@ -85,7 +199,7 @@ const administrator = async () => {
 
       await createModal(
         idLomba,
-        "Ubah Jadwal Pendaftaran " + namaLomba,
+        "Ubah Lomba " + namaLomba,
         content,
         footer
       );
@@ -104,10 +218,10 @@ const administrator = async () => {
                                 `;
 
             const form = document.getElementById(`${idLomba}-form`);
-            const dataId = (form.querySelector(`input[name="id_lomba"]`).value =
-              idLomba);
+            
             var data = new FormData(form);
             let response = await EMSApi.updateLomba(data);
+            console.log(response.status);
             if (response.status === "success") {
               ToastModal("success", "berhasil update");
               document.querySelector(`#modal_${idLomba} .btn-close`).click();
@@ -117,6 +231,57 @@ const administrator = async () => {
           });
         }
       }, 1);
+
+
+      // Modal Delete
+      await createModal(
+        `delete-${idLomba}`,
+        "Delete Confirmation",
+        `Anda Yakin ingin menghapus  <strong>${namaLomba}</strong>
+        <form id="${idLomba}-form-delete">
+        <input type="hidden" name="id_lomba" value="${idLomba}">
+        </form>
+        `,
+        `
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger modal-action-button">Delete</button>
+        `
+      );
+
+      // Modal Button Delete Event Listener
+      await setTimeout(() => {
+        const modalActionButton = document.querySelector(
+          `#modal_delete-${idLomba} .modal-action-button`
+        );
+        if (modalActionButton) {
+          modalActionButton.addEventListener("click", async (event) => {
+            modalActionButton.disabled = true;
+            modalActionButton.innerHTML = `
+                                   <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                    Menghapus ...
+                                `;
+
+            const form = document.getElementById(`${idLomba}-form-delete`);
+            const id_lomba = (form.querySelector(`input[name="id_lomba"]`).value);
+            
+            console.log(id_lomba);
+            let response = await EMSApi.deleteLomba(id_lomba);
+
+            if (response.status === "success") {
+              ToastModal("success", "berhasil menghapus");
+              document.querySelector(`#modal_delete-${idLomba} .btn-close`).click();
+              modalActionButton.disabled = false;
+              modalActionButton.innerHTML = `Delete`;
+
+              setTimeout(location.reload(),1000);
+
+            }
+
+
+          });
+        }
+      }, 1000);
+
     }
   };
 
@@ -216,13 +381,13 @@ const administrator = async () => {
                                 <button type="button"
                                     class="btn btn-outline-primary"
                                     data-bs-toggle="modal"
-                                    data-bs-target='#modal_delete-${uuid}'
-                                    data-item-id="123">
+                                    data-bs-target='#modal_delete-${uuid}'>
                                      Delete
                                 </button>
                             </td>
                         <tr>
                             `;
+
       // Modal Button Edit Event Listener
       await setTimeout(() => {
         const modalActionButton = document.querySelector(
@@ -306,6 +471,10 @@ const administrator = async () => {
           });
         }
       }, 1000);
+
+
+
+
     }
   };
 
@@ -325,6 +494,28 @@ const administrator = async () => {
       if (response.status === "success") {
         ToastModal("success", "berhasil update");
         document.querySelector(`#modal-tambah-akun .btn-close`).click();
+        button.disabled = false;
+        button.innerHTML = `Tambah`;
+        location.reload();
+      }
+    });
+  };
+
+  const tambahLombaHandler = async (event) => {
+    let button = document.getElementById("buttonAddLomba");
+    button.addEventListener("click", async () => {
+      button.disabled = true;
+      button.innerHTML = `
+                                   <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                    Memproses ...
+                                `;
+
+      const form = document.getElementById(`tambah-lomba-form`);
+      var data = new FormData(form);
+      let response = await EMSApi.addLomba(data);
+      if (response.status === "success") {
+        ToastModal("success", "berhasil menambah lomba");
+        document.querySelector(`#modal-tambah-lomba .btn-close`).click();
         button.disabled = false;
         button.innerHTML = `Tambah`;
         location.reload();
@@ -409,7 +600,12 @@ const administrator = async () => {
     tambahAkunButton.addEventListener("click", tambahAkunHandler);
   }
 
-  if (counterBasketElement) {
+  if (modalActionTambahLombaButtonElement) {
+    const tambahLombaButton = document.getElementById("tambah-lomba");
+    tambahLombaButton.addEventListener("click", tambahLombaHandler);
+  }
+
+  if (administratorElement) {
     showPenanggungJawab();
     showKelolaLomba();
     showCounter();
