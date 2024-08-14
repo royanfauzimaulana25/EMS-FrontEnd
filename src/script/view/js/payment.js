@@ -47,7 +47,7 @@ const payment = () => {
 
     const getCompetition = async (id) => {
         const response = await EMSApi.getLomba(id);
-
+        console.log(response)
         const lomba = response.data['nama'];
         const price = response.data['price'];     
 
@@ -63,15 +63,16 @@ const payment = () => {
     const checkInvoiceStatus = async () => {
 
         const response = await EMSApi.checkInvoice(localStorage.getItem('uuid') + '-payment');
-
+        console.log(JSON.stringify(response) !== '[]');
 
         // console.log(JSON.stringify(response) === '[]');
         if (JSON.stringify(response) !== '[]'){
-            if (response[0].status === 'Paid') {
+            if (response[0].status === 'SETTLED') {
     
                 const Data = await EMSApi.getLomba(localStorage.getItem('uuid'));
                 const price = Data.data['price']; 
                 const lomba = Data.data['nama'].toLowerCase(); 
+                const kategori_lomba = Data.data['kategori_lomba'].toLowerCase(); 
     
                 const info = {
                     external_id: localStorage.getItem('uuid') + '-payment', 
@@ -83,7 +84,7 @@ const payment = () => {
                 const responsePay = await EMSApi.addPayment(info)
                 ModalSucces();
                 await setTimeout(() => {
-                    window.location.href = `http://localhost:8080/registration/team/team-summary.html`;
+                    window.location.href = `http://localhost:8080/registration/${kategori_lomba}/${kategori_lomba}-summary.html`;
                 },3000); 
     
             }
