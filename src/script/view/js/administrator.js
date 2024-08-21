@@ -287,6 +287,8 @@ const administrator = async () => {
 
   const showPenanggungJawab = async () => {
     const response = await EMSApi.getPenanggungJawab();
+    const lomba_response = await EMSApi.getLombaAll();
+    console.log(lomba_response.data);
     const bodyTable = document.getElementById("body-table-kelola-pj");
     let count = 1;
     for (let item in response.data) {
@@ -297,7 +299,7 @@ const administrator = async () => {
       let jenis_Kelamin = response.data[item].jenis_Kelamin;
       let nama_lomba = response.data[item].nama_lomba;
       let jenis_Kelamin_selected = ''
-      let lomba_selected = ''
+      
 
       if (jenis_Kelamin == 'Laki-Laki') {
         jenis_Kelamin_selected = `
@@ -311,17 +313,6 @@ const administrator = async () => {
                 `
       };
 
-      if (nama_lomba == 'Photography') {
-        lomba_selected = `
-                <option value="150">Basketball</option>
-                <option selected value="110">Photography</option>
-                `
-      } else {
-        lomba_selected = `
-                <option selected value="150">Basketball</option>
-                <option  value="110">Photography</option>
-                `
-      };
 
       let content = `
       <form id="${uuid}-form" class="row g-3">
@@ -346,12 +337,12 @@ const administrator = async () => {
             </div>
             <div class="col-md-12">
               <label for="lomba-pj" class="form-label">Penugasan</label>
-              <select id="lomba-pj" class="form-select" name="lomba" >
-              ${lomba_selected}
-                </select>
+              <select id="lomba-pj-${uuid}" class="form-select" name="lomba" >
+              </select>
             </div>
           </form>
       `;
+
 
       let footer = `
       <button
@@ -367,6 +358,25 @@ const administrator = async () => {
        // Modal Detail
       await createModal(uuid, "Details Penanggung Jawab", content, footer);
       
+      let dropdown_penugasan = document.getElementById(`lomba-pj-${uuid}`);
+
+      for (let item_lomba in lomba_response.data){
+        const option = document.createElement('option');
+        option.value = lomba_response.data[item_lomba].id_lomba; 
+        option.text = lomba_response.data[item_lomba].nama_lomba;  
+        dropdown_penugasan.add(option);
+      }
+      
+      const options = dropdown_penugasan.options;
+      
+      for (let i = 0; i < options.length; i++) {
+        if (options[i].text === nama_lomba) {
+          console.log(options[i].value)
+          options[i].selected = true;
+          // break; // Stop the loop once the option is found
+        }
+      }
+
       bodyTable.innerHTML += `
                         <tr>
                             <th scope="row">${count++}</th>
@@ -479,6 +489,16 @@ const administrator = async () => {
   };
 
   const tambahAkunHandler = async (event) => {
+    const lomba_response = await EMSApi.getLombaAll();
+    const dropdown = document.getElementById('lomba-pj')
+
+      for (let item_lomba in lomba_response.data){
+        const option = document.createElement('option');
+        option.value = lomba_response.data[item_lomba].id_lomba; 
+        option.text = lomba_response.data[item_lomba].nama_lomba;  
+        dropdown.add(option);
+      }
+
     let button = document.getElementById("buttonAddPJ");
     button.addEventListener("click", async () => {
       button.disabled = true;

@@ -199,7 +199,7 @@ class EMSApi {
             const response = await axios.delete(`${baseUrl}/lomba/?id_lomba=${id}`);
             return response.data; // Axios automatically parses JSON
         } catch (error) {
-            // Handle errors (e.g., network issues, server errors)
+            // Handle errors (e.g., network issulomba/alles, server errors)
             return error; // Or return a custom error object
         }
     }
