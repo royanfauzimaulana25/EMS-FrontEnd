@@ -47,17 +47,23 @@
       <div class="row align-content-center">
         <div class="col ">
           <div class="row text-bg-dark p-4  my-5">
-            <h1 class="fw-bold fs-3 text-center text-primary">Photography Registration</h1>
+            <h1 class="fw-bold fs-3 text-center text-primary">Registration</h1>
           </div>
         </div>
       </div>
 
       <div class="row">
-        <form id="photography-form" class="row g-3">
+        <form id="single-form" class="row g-3">
+          <div class="col-md-12">
+            <label for="lomba-single" class="form-label">Cabang Perlombaan</label>
+            <select id="lomba-single" name="lomba" class="form-select" required>
+              <option selected value="">Pilih...</option>
+            </select>
+          </div>
           <input type="text" id="uuid" name="id_user" value="" hidden>
           <div class="col-md-6">
-            <label for="jenjang" class="form-label">Jenjang Sekolah</label>
-            <select id="jenjang-photography" name="jenjang-photography" class="form-select" required>
+            <label for="jenjang-single" class="form-label">Jenjang Sekolah</label>
+            <select id="jenjang-single" name="jenjang" class="form-select" required>
               <option selected value="">Pilih...</option>
             </select>
           </div>
@@ -101,7 +107,7 @@
             <input type="file" class="form-control" id="kartu" name="kartu_pelajar" required>
           </div>
           <div class="col-12">
-            <button type="submit" id="button-submit-photography" class="btn btn-primary" id="">Daftar Lomba</button>
+            <button type="submit" id="button-submit-single" class="btn btn-primary" id="">Daftar Lomba</button>
           </div>
         </form>
       </div>

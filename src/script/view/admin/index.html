@@ -15,6 +15,139 @@
   <body>
     <!-- Modal -->
     <div id="modal-container">
+      <!-- Modal Tambah Lomba-->
+      <div
+        class="modal fade"
+        id="modal-tambah-lomba"
+        tabindex="-1"
+        aria-labelledby="modal_label_tambah_lomba"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="modal_label_tambah_lomba">
+                Tambah Lomba
+              </h1>
+
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <!-- Content Modal -->
+              <form id="tambah-lomba-form" class="row g-3">
+                <div class="col-md-6">
+                  <label for="id_lomba" class="form-label">ID Lomba</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="id_lomba"
+                    name="id_lomba"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="nama_lomba" class="form-label">Nama Lomba</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nama_lomba"
+                    name="nama_lomba"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="biaya" class="form-label">Biaya Registrasi</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="biaya"
+                    name="biaya_registrasi"
+                  />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label" for="deskripsi"
+                    >Deskripsi Lomba</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="deskripsi"
+                    name="description"
+                  />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label" for="start_date"
+                    >Waktu Mulai Pendaftaran</label
+                  >
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="start_date"
+                    name="date_start"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="end_date"
+                    >Waktu Berakhir Pendaftaran</label
+                  >
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="end_date"
+                    name="date_end"
+                  />
+                </div>
+                
+                <div class="col-md-6">
+                  <label class="form-label" for="ilustrasi">Gambar Ilustrasi Lomba</label>
+                  <input type="file" class="form-control" id="ilustrasi" name="ilustrasi" >
+                </div>
+
+                <div class="col-md-6">
+                  <label for="kategori_lomba" class="form-label"
+                    >Kategori Lomba</label
+                  >
+                  <select
+                    id="kategori_lomba"
+                    class="form-select"
+                    name="kategori_lomba"
+                  >
+                    <option selected value="">Pilih...</option>
+                    <option value="team">Team</option>
+                    <option value="single">Single</option>
+                  </select>
+                </div>
+                
+              </form>
+              <!-- End Content Modal -->
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-danger"
+                data-bs-dismiss="modal"
+              >
+                Cancel
+              </button>              
+              <button
+                type="button"
+                class="btn btn-outline-primary my-modal-action-button"
+                id="buttonAddLomba"
+              >
+                Tambah
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Tambah Akun PJ-->
       <div
         class="modal fade"
         id="modal-tambah-akun"
@@ -86,8 +219,6 @@
                   <label for="lomba-pj" class="form-label">Penugasan</label>
                   <select id="lomba-pj" class="form-select" name="lomba">
                     <option selected value="">Pilih...</option>
-                    <option value="150">Basketball</option>
-                    <option value="110">Photography</option>
                   </select>
                 </div>
               </form>
@@ -163,39 +294,25 @@
     </header>
 
     <!-- Main Content -->
-    <main>
+    <main id="administrator">
       <div class="container-fluid p-5">
+        
         <div class="row align-items-center">
-          <div class="col">
-            <div class="row bg-white shadow m-5 p-5 px-5 text-center rounded">
-              <div class="fs-3 fw-bold bg-primary text-white p-2 rounded">
-                Pendaftar Basket
-              </div>
-              <div
-                class="fs-1 my-5 text-primary fw-bold"
-                id="basket-count-admin"
-              >
-                0
-              </div>
-              <div class="fs-3">Tim</div>
-            </div>
 
-            <div class="row bg-white shadow m-5 p-5 px-5 text-center rounded">
-              <div class="fs-3 fw-bold bg-primary text-white p-2 rounded">
-                Pendaftar Photography
-              </div>
-              <div
-                class="fs-1 my-5 text-primary fw-bold"
-                id="photography-count-admin"
-              >
-                0
-              </div>
-              <div class="fs-3">Orang</div>
-            </div>
-          </div>
+          <div class="col" id="couter-container"></div>
+
           <div class="col">
             <!-- Kelola Lomba -->
             <h2 class="text fs-3">Kelola Lomba</h2>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#modal-tambah-lomba"
+              id="tambah-lomba"
+            >
+              + Tambah Lomba
+            </button>
             <table class="table table-bordered table-hover">
               <thead>
                 <tr class="bg-primary text-white">

@@ -8,15 +8,15 @@ import registration from './script/view/js/registration.js';
 import account from './script/view/js/account.js';
 
 import administrator from './script/view/js/administrator.js';
-import penanggung_jawab_photography from './script/view/js/pj-photography.js';
-import penanggung_jawab_basketball from './script/view/js/pj-basketball.js';
+import penanggung_jawab_single from './script/view/js/pj-single.js';
+import penanggung_jawab_team from './script/view/js/pj-team.js';
 
 
-import photographyRegistration from './script/view/js/photography-registration.js';
-import photographySummary from './script/view/js/photography-summary.js';
+import singleRegistration from './script/view/js/single-registration.js';
+import single_summary from './script/view/js/single-summary.js';
 
-import basketballRegistration from './script/view/js/basketball-registration.js';
-import basketball_summary from './script/view/js/basketball-summary.js';
+import teamRegistration from './script/view/js/team-registration.js';
+import team_summary from './script/view/js/team-summary.js';
 
 import payment from './script/view/js/payment.js';
 
@@ -28,14 +28,15 @@ document.addEventListener('DOMContentLoaded', () => {
   account();
 
   administrator();
-  penanggung_jawab_photography();
-  penanggung_jawab_basketball();
+  
+  penanggung_jawab_single();
+  penanggung_jawab_team();
 
-  photographyRegistration();
-  photographySummary();
+  singleRegistration();
+  single_summary();
 
-  basketballRegistration();
-  basketball_summary();
+  teamRegistration();
+  team_summary();
 
   payment();
 });

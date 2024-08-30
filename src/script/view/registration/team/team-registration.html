@@ -47,20 +47,26 @@
             <div class="row align-content-center">
                 <div class="col ">
                     <div class="row text-bg-dark p-4  my-5">
-                        <h1 class="fw-bold fs-3 text-center text-primary">Basketball Registration</h1>
+                        <h1 class="fw-bold fs-3 text-center text-primary">Team Registration</h1>
                     </div>
                 </div>
             </div>
 
             <div class="row">
-                <form id="basketball-form" class="row g-3">
+                <form id="team-form" class="row g-3">
                     <input type="text" id="uuid" name="id_user" value="" hidden>
                     <!-- General Section -->
                     <h5>General Information</h5>
                     <hr>
+                    <div class="col-md-12">
+                        <label for="lomba-team" class="form-label">Cabang Perlombaan</label>
+                        <select id="lomba-team" name="lomba" class="form-select" required>
+                          <option selected value="">Pilih...</option>
+                        </select>
+                      </div>
                     <div class="col-md-6">
-                        <label for="jenjang-basket" class="form-label">Jenjang Sekolah</label>
-                        <select id="jenjang-basket" name="jenjang" class="form-select">
+                        <label for="jenjang-team" class="form-label">Jenjang Sekolah</label>
+                        <select id="jenjang-team" name="jenjang" class="form-select">
                             <option selected value="">Pilih...</option>
                         </select>
                     </div>
@@ -84,24 +90,12 @@
                         <input type="text" class="form-control" name="nama_tim" id="tim" required>
                     </div>
                     <div class="col-md-6">
-                        <label for="kategori" class="form-label">Kategori Tim</label>
-                        <select id="kategori" class="form-select" name="kategori_tim" required>
-                            <option selected>Pilih...</option>
-                            <option value="Putra">Putra</option>
-                            <option value="Putri">Putri</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="pelatih" class="form-label">Nama Pelatih</label>
-                        <input type="text" class="form-control" name="nama_pelatih" id="pelatih" required>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="official" class="form-label">Nama Official</label>
-                        <input type="text" class="form-control" name="nama_official" id="official" required>
+                        <label for="pendamping" class="form-label">Nama Pendamping</label>
+                        <input type="text" class="form-control" name="nama_pendamping" id="pendamping" required>
                     </div>
 
-                    <!-- Capten Section -->
-                    <h5>Capten Information</h5>
+                    <!-- Team Member 1 Section -->
+                    <h5>Team Member 1</h5>
                     <hr>
 
                     <div class="col-md-6">
@@ -116,14 +110,10 @@
                             <option value="perempuan">Perempuan</option>
                         </select>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label for="alamat" class="form-label">Alamat Peserta</label>
                         <input type="text" class="form-control" id="alamat" name="alamat" required>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="no_punggung_1" class="form-label">No Punggung</label>
-                        <input type="text" class="form-control" id="no_punggung_1" name="no_punggung" required>
-                    </div>
+                    </div>                    
                     <div class="col-md-6">
                         <label class="form-label" for="photo">Pas Photo</label>
                         <input type="file" class="form-control" id="photo" name="pas_photo" required>
@@ -133,8 +123,8 @@
                         <input type="file" class="form-control" id="kartu" name="kartu_pelajar" required>
                     </div>
 
-                    <!-- Team Member 1 Section -->
-                    <h5>Team Member 1</h5>
+                    <!-- Team Member 2 Section -->
+                    <h5>Team Member 2</h5>
                     <hr>
 
                     <div class="col-md-6">
@@ -149,13 +139,9 @@
                             <option value="perempuan">Perempuan</option>
                         </select>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label for="alamat_member_1" class="form-label">Alamat Peserta</label>
                         <input type="text" class="form-control" id="alamat_member_1" name="alamat_1" required>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="no_punggung_m_1" class="form-label">No Punggung</label>
-                        <input type="text" class="form-control" id="no_punggung_m_1" name="no_punggung_1" required>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label" for="photo_member_1">Pas Photo</label>
@@ -166,7 +152,7 @@
                         <input type="file" class="form-control" id="kartu_member_1" name="kartu_pelajar_1" required>
                     </div>
 
-                    <!-- Team Member 2 Section -->
+                    <!-- Team Member 3 Section -->
                     <h5>Team Member 2</h5>
                     <hr>
 
@@ -182,13 +168,9 @@
                             <option value="perempuan">Perempuan</option>
                         </select>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label for="alamat_member_2" class="form-label">Alamat Peserta</label>
                         <input type="text" class="form-control" id="alamat_member_2" name="alamat_2" required>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="no_punggung_m_2" class="form-label">No Punggung</label>
-                        <input type="text" class="form-control" id="no_punggung_m_2" name="no_punggung_2" required>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label" for="photo_member_2">Pas Photo</label>
@@ -200,7 +182,7 @@
                     </div>
 
                     <!-- Team Member Section -->
-                    <h5>Team Member 3</h5>
+                    <h5>Team Member 4</h5>
                     <hr>
 
                     <div class="col-md-6">
@@ -215,13 +197,9 @@
                             <option value="perempuan">Perempuan</option>
                         </select>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label for="alamat_member_3" class="form-label">Alamat Peserta</label>
                         <input type="text" class="form-control" id="alamat_member_3" name="alamat_3" required>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="no_punggung_m_3" class="form-label">No Punggung</label>
-                        <input type="text" class="form-control" id="no_punggung_m_3" name="no_punggung_3" required>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label" for="photo_member_3">Pas Photo</label>
@@ -233,7 +211,7 @@
                     </div>
 
                     <div class="col-12">
-                        <button type="submit" id="button-submit-basketball" class="btn btn-primary">Daftar Lomba</button>
+                        <button type="submit" id="button-submit-team" class="btn btn-primary">Daftar Lomba</button>
                     </div>
                 </form>
             </div>

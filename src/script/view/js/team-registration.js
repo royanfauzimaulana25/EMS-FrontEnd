@@ -1,40 +1,39 @@
 import EMSApi from "../../data/apis.js";
 import { Alert, Modal, Toast } from "bootstrap";
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import { Buffer } from 'buffer';
-const photographyRegistration = () => {
-    // Get Element ======================================================
-    const RegistrationFormPhotographyElement = document.getElementById("photography-form");
-    const JenjangElement = document.getElementById('jenjang-photography');
-    const SekolahElement = document.getElementById('asal');
-    const buttonSubmitPhotography = document.getElementById('button-submit-photography')
 
-    
-    
+const teamRegistration = () => {
+    // Get Element ======================================================
+    const RegistrationFormTeamElement = document.getElementById("team-form");
+    const JenjangElement = document.getElementById('jenjang-team');
+    const SekolahElement = document.getElementById('asal');
+    const buttonSubmitTeam = document.getElementById('button-submit-team')
+    const LombaTeamElement = document.getElementById("lomba-team");
+
     // Function =========================================================
-    // Add Photography Registration
-    const addPhotographyHandler = async (event) => {
+    // Add Team Registration
+    const addTeamHandler = async (event) => {
         event.preventDefault();
 
-        buttonSubmitPhotography.disabled = true;
-        buttonSubmitPhotography.innerHTML = `
+        buttonSubmitTeam.disabled = true;
+        buttonSubmitTeam.innerHTML = `
                                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                                     Memproses ...
                                 `;
 
         const id_user = localStorage.getItem('uuid');
         const id = document.getElementById('uuid').value = id_user;
-        var formElement = document.getElementById("photography-form");
+        var formElement = document.getElementById("team-form");
         var data = new FormData (formElement);
 
         try {
-            let response = await EMSApi.addPhotography(data); 
+            let response = await EMSApi.addTeam(data); 
             console.log(response);
             if(response.status == 'error') {
                 ToastMessage(response.status, response.details)
             } else {
                 ModalSucces();
-
+                console.log(response);
                 await setTimeout(() => {
                     window.location.href = `${window.location.origin}/payment/index.html`
                 },3000); 
@@ -54,7 +53,6 @@ const photographyRegistration = () => {
     // Show Jenjang Sekolah 
     const showJenjang = async () => {
         let response = await EMSApi.getJenjang();
-        console.log(response);
         for (let item in response.data){
             const option = document.createElement('option');
             
@@ -85,6 +83,21 @@ const photographyRegistration = () => {
         }  
     };
 
+    // Show Lomba
+  const showLomba = async () => {
+    let response = await EMSApi.getLombaAll();
+
+    for (let item in response.data) {
+      if (response.data[item]["kategori_lomba"] === "team") {
+        const option = document.createElement("option");
+
+        option.value = response.data[item]["id_lomba"];
+        option.text = response.data[item]["nama_lomba"];
+        LombaTeamElement.add(option);
+      }
+    }
+  };
+
     
     // Modal Succes
     const ModalSucces = () => {
@@ -108,19 +121,20 @@ const photographyRegistration = () => {
     };
 
     // Event Handler ======================================================
-    // Registration Photography
-    if (RegistrationFormPhotographyElement) {
-        RegistrationFormPhotographyElement.addEventListener("submit", addPhotographyHandler);
+    // Registration Team
+    if (RegistrationFormTeamElement) {
+        RegistrationFormTeamElement.addEventListener("submit", addTeamHandler);
+        showLomba();
     };
 
     // Jenjang 
     if (JenjangElement) {
         showJenjang();
-        JenjangElement.addEventListener('change', showJenjangHandler)
+        JenjangElement.addEventListener('change', showJenjangHandler);
         showSekolah();
     };
 
 
 };
 
-export default photographyRegistration;
+export default teamRegistration;

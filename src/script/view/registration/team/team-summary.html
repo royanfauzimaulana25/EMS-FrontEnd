@@ -42,12 +42,12 @@
     </header>
 
     <!-- Main Content -->
-    <main id="basketball">
+    <main id="team">
         <div class="container my-5">
             <div class="row align-content-center">
                 <div class="col ">
                     <div class="row text-bg-dark p-4  my-5 rounded">
-                        <h1 class="fw-bold fs-3 text-center text-primary">Basketball Registration</h1>
+                        <h1 class="fw-bold fs-3 text-center text-primary">Registration Summary</h1>
                     </div>
                 </div>
             </div>
@@ -61,6 +61,12 @@
                             <h5 class="fw-bold  text-primary">General Information</h5>
                             <hr>
                             <table class="table table-borderless fs-5">
+                                <tr>
+                                    <td class="fw-bold">Cabang Lomba</td>
+                                </tr>
+                                <tr>
+                                    <td id="lomba-team"></td>
+                                </tr>
                                 <tr>
                                     <td class="fw-bold">ID Pendaftaran</td>
                                     <td class="fw-bold">Waktu Pendaftaran</td>
@@ -78,41 +84,13 @@
                                     <td id="asal_sekolah"></td>
                                 </tr>
                                 <tr>
-                                    <td class="fw-bold" >Nama Pelatih</td>
-                                    <td class="fw-bold" >Kategori Tim</td>
-                                </tr>
-                                <tr>
-                                    <td id="pelatih"></td>
-                                    <td id="kategori"></td>
-                                </tr>
-                                <tr>
-                                    <td class="fw-bold">Nama Official</td>
+                                    <td class="fw-bold" >Nama Pendamping</td>
                                     <td class="fw-bold">No Telp Tim</td>
                                 </tr>
                                 <tr>
-                                    <td id="official"></td>
+                                    <td id="pendamping"></td>
                                     <td id="no_telp"></td>
-                                </tr>
-                            </table>
-
-                            <h5 class="fw-bold  text-primary mt-4">Captain Information</h5>
-                            <hr>
-                            <table class="table table-borderless  fs-5">
-                                <tr>
-                                    <td class="fw-bold">Nama Lengkap Peserta</td>
-                                    <td class="fw-bold">No Punggung Peserta</td>
-                                    <td rowspan="4" class="align-middle align-center" align="center" id="pas_photo_1"><img src="/Sample Image.png" width="200px"></td>
-                                </tr>
-                                <tr>
-                                    <td id="nama_1"></td>
-                                    <td id="no_punggung_1"></td>
-                                </tr>
-                                <tr>
-                                    <td class="fw-bold" colspan="2">Alamat Peserta</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" id="alamat_1">Jl. Dr Cipto Mangunkusumo Gang Rajawali Bandar Lampung Lampung Indonesia</td>
-                                </tr>
+                                </tr>                                
                             </table>
 
                             <h5 class="fw-bold  text-primary mt-4">Team Member 1 Information</h5>
@@ -120,12 +98,32 @@
                             <table class="table table-borderless  fs-5">
                                 <tr>
                                     <td class="fw-bold">Nama Lengkap Peserta</td>
-                                    <td class="fw-bold">No Punggung Peserta</td>
+                                    <td class="fw-bold">Jenis Kelamin</td>
+                                    <td rowspan="4" class="align-middle align-center" align="center" id="pas_photo_1"><img src="/Sample Image.png" width="200px"></td>
+                                </tr>
+                                <tr>
+                                    <td id="nama_1"></td>
+                                    <td id="jenis_kelamin_1"></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold" colspan="2">Alamat Peserta</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" id="alamat_1"></td>
+                                </tr>
+                            </table>
+
+                            <h5 class="fw-bold  text-primary mt-4">Team Member 2 Information</h5>
+                            <hr>
+                            <table class="table table-borderless  fs-5">
+                                <tr>
+                                    <td class="fw-bold">Nama Lengkap Peserta</td>
+                                    <td class="fw-bold">Jenis Kelamin</td>
                                     <td rowspan="4" class="align-middle align-center" align="center" id="pas_photo_2"><img src="/Sample Image.png" width="200px"></td>
                                 </tr>
                                 <tr>
                                     <td id="nama_2"></td>
-                                    <td id="no_punggung_2"></td>
+                                    <td id="jenis_kelamin_2"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold" colspan="2" >Alamat Peserta</td>
@@ -135,17 +133,17 @@
                                 </tr>
                             </table>
 
-                            <h5 class="fw-bold  text-primary mt-4">Team Member 2 Information</h5>
+                            <h5 class="fw-bold  text-primary mt-4">Team Member 3 Information</h5>
                             <hr>
                             <table class="table table-borderless  fs-5">
                                 <tr>
                                     <td class="fw-bold">Nama Lengkap Peserta</td>
-                                    <td class="fw-bold">No Punggung Peserta</td>
+                                    <td class="fw-bold">Jenis Kelamin</td>
                                     <td rowspan="4" class="align-middle align-center" align="center" id="pas_photo_3"><img src="/Sample Image.png" width="200px"></td>
                                 </tr>
                                 <tr>
                                     <td id="nama_3"></td>
-                                    <td id="no_punggung_3"></td>
+                                    <td id="jenis_kelamin_3"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold" colspan="2">Alamat Peserta</td>
@@ -155,23 +153,23 @@
                                 </tr>
                             </table>
 
-                            <h5 class="fw-bold  text-primary mt-4">Team Member 3 Information</h5>
+                            <h5 class="fw-bold  text-primary mt-4">Team Member 4 Information</h5>
                             <hr>
                             <table class="table table-borderless  fs-5">
                                 <tr>
                                     <td class="fw-bold">Nama Lengkap Peserta</td>
-                                    <td class="fw-bold">No Punggung Peserta</td>
+                                    <td class="fw-bold">Jenis Kelamin</td>
                                     <td rowspan="4" class="align-middle align-center" align="center" id="pas_photo_4"><img src="/Sample Image.png" width="200px"></td>
                                 </tr>
                                 <tr>
                                     <td id="nama_4"></td>
-                                    <td id="no_punggung_4"></td>
+                                    <td id="jenis_kelamin_4"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold" colspan="2">Alamat Peserta</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2" id="alamat_4">Jl. Dr Cipto Mangunkusumo Gang Rajawali Bandar Lampung Lampung Indonesia</td>
+                                    <td colspan="2" id="alamat_4"></td>
                                 </tr>
                             </table>
                         </div>
@@ -182,7 +180,7 @@
 
                 <div class="row mt-5 text-center">
                     <div class="col">
-                        <button type="button" class="btn btn-outline-primary fw-bold " id="download-basketball">Download Bukti Pendaftaran</button>
+                        <button type="button" class="btn btn-outline-primary fw-bold " id="download-team">Download Bukti Pendaftaran</button>
                     </div>
                 </div>
 
