@@ -209,6 +209,7 @@ const penanggung_jawab_single = async () => {
         let no_telp = response.data[item].no_telp;
         let nama_peserta = response.data[item].nama_peserta;
         let alamat_peserta = response.data[item].alamat_peserta;
+        let prestasi_peserta = response.data[item].prestasi_peserta;
         let pas_photo = response.data[item].pas_photo;
         let surat_tugas = response.data[item].surat_tugas;
         let kartu_pelajar = response.data[item].kartu_pelajar;
@@ -268,10 +269,12 @@ const penanggung_jawab_single = async () => {
                                     <td rowspan="3" class="align-middle align-center" align="center" id="kartu_pelajar"><img class="rounded" src="${kartu_pelajar}" height= 200vh></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="3" class="fw-bold" >Alamat Peserta</td>
+                                    <td  class="fw-bold" >Alamat Peserta</td>
+                                    <td  class="fw-bold" >Prestasi Peserta</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="3" id="alamat">${alamat_peserta}</td>
+                                    <td id="alamat">${alamat_peserta}</td>
+                                    <td id="prestasi">${prestasi_peserta}</td>
                                 </tr>
                             </table>
           `;

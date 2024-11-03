@@ -14,17 +14,18 @@ const single_summary = () => {
     // function
     const getSummaryData = async (id) => {
         const response = await EMSApi.getSingle(id);
-        document.getElementById('lomba').innerText = response.data[8];
+        document.getElementById('lomba').innerText = response.data[9];
         document.getElementById('id_pendaftaran').innerText = response.data[0];
         document.getElementById('date').innerText = response.data[1];
 
-        document.getElementById('pas_photo').innerHTML = `<img class="rounded" src="${response.data[7]}" height= 200vh>`;
+        document.getElementById('pas_photo').innerHTML = `<img class="rounded" src="${response.data[8]}" height= 200vh>`;
 
         document.getElementById('jenjang_sekolah').innerText = response.data[2];
         document.getElementById('asal_sekolah').innerText = response.data[3];
         document.getElementById('nama_lengkap').innerText = response.data[5];
         document.getElementById('no_telp').innerText = response.data[4];
         document.getElementById('alamat').innerText = response.data[6];
+        document.getElementById('prestasi').innerText = response.data[7];
         // return response;
     }
 

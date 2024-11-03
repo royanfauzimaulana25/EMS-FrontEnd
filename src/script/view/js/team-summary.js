@@ -31,21 +31,25 @@ const basketball_summary = () => {
         document.getElementById('jenis_kelamin_1').innerText = response.data.member[0]['jenis_kelamin'];
         document.getElementById('pas_photo_1').innerHTML = `<img class="rounded" src="${response.data.member[0]['pas_photo']}" height= 200vh>`;
         document.getElementById('alamat_1').innerText = response.data.member[0]['alamat'];
+        document.getElementById('prestasi_1').innerText = response.data.member[0]['prestasi'];
         
         document.getElementById('nama_2').innerText = response.data.member[1]['nama_lengkap'];
         document.getElementById('jenis_kelamin_2').innerText = response.data.member[1]['jenis_kelamin'];
         document.getElementById('pas_photo_2').innerHTML = `<img class="rounded" src="${response.data.member[1]['pas_photo']}" height= 200vh>`;
         document.getElementById('alamat_2').innerText = response.data.member[1]['alamat'];
+        document.getElementById('prestasi_2').innerText = response.data.member[1]['prestasi'];
         
         document.getElementById('nama_3').innerText = response.data.member[2]['nama_lengkap'];
         document.getElementById('jenis_kelamin_3').innerText = response.data.member[2]['jenis_kelamin'];
         document.getElementById('pas_photo_3').innerHTML = `<img class="rounded" src="${response.data.member[2]['pas_photo']}" height= 200vh>`;
         document.getElementById('alamat_3').innerText = response.data.member[2]['alamat'];
+        document.getElementById('prestasi_3').innerText = response.data.member[2]['prestasi'];
         
         document.getElementById('nama_4').innerText = response.data.member[3]['nama_lengkap'];
         document.getElementById('jenis_kelamin_4').innerText = response.data.member[3]['jenis_kelamin'];
         document.getElementById('pas_photo_4').innerHTML = `<img class="rounded" src="${response.data.member[3]['pas_photo']}" height= 200vh>`;
         document.getElementById('alamat_4').innerText = response.data.member[3]['alamat'];
+        document.getElementById('prestasi_4').innerText = response.data.member[3]['prestasi'];
 
         // return response;
     }

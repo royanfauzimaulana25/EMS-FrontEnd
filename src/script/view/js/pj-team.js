@@ -302,6 +302,11 @@ const penanggung_jawab_team = async () => {
                                 <tr>
                                     <td colspan="2" id="alamat_${counter}">${member[member_data].alamat}</td>
                                 </tr>
+                                <tr>
+                                    <td class="fw-bold" colspan="2" >Prestasi Peserta</td></tr>
+                                <tr>
+                                    <td colspan="2" id="prestasi_${counter}">${member[member_data].prestasi}</td>
+                                </tr>
                             </table>
             `;
             content_wrapper += content ;
