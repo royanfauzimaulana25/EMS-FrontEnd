@@ -8,6 +8,16 @@ const baseUrl = "https://ems-backend-production.up.railway.app";
 
 
 class EMSApi {
+    // Check Registration Status
+    static async cekRegistration(iduser) {
+        try {
+            const response = await axios.get(`${baseUrl}/register/status?iduser=${iduser}`);
+            return response.data;
+        } catch (error) {
+            return error;
+        }
+    }
+
     // Add Account Registration
     static async addAccount(data) {
         try {
@@ -201,6 +211,16 @@ class EMSApi {
         } catch (error) {
             // Handle errors (e.g., network issulomba/alles, server errors)
             return error; // Or return a custom error object
+        }
+    }
+
+    // Get Lomba Scoring Link (by ID)
+    static async getLombaLink(id) {
+        try {
+            const response = await axios.get(`${baseUrl}/lomba/link?id=${id}`);
+            return response.data;
+        } catch (error) {
+            return error;
         }
     }
 

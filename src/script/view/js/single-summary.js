@@ -7,13 +7,14 @@ import { jsPDF } from 'jspdf';
 
 const single_summary = () => {
     // Get Element ======================================================
-    const photographyMainElement = document.getElementById("single");
+    const singleMainElement = document.getElementById("single");
     const downloadButtonElement = document.getElementById("download-single");
     
 
     // function
     const getSummaryData = async (id) => {
         const response = await EMSApi.getSingle(id);
+        console.log(response.data);
         document.getElementById('lomba').innerText = response.data[9];
         document.getElementById('id_pendaftaran').innerText = response.data[0];
         document.getElementById('date').innerText = response.data[1];
@@ -26,7 +27,9 @@ const single_summary = () => {
         document.getElementById('no_telp').innerText = response.data[4];
         document.getElementById('alamat').innerText = response.data[6];
         document.getElementById('prestasi').innerText = response.data[7];
-        // return response;
+        
+        var linkElement = document.getElementById('penilaian-single');
+        linkElement.setAttribute("href", `${response.data[10]}`);
     }
 
     const donwloadBuktiHandler = async (event) => {
@@ -46,6 +49,7 @@ const single_summary = () => {
         document.getElementById('verified').hidden = false;
         document.getElementById('header').hidden = true;
         document.getElementById('download-single').hidden = true;
+        document.getElementById('penilaian-single').hidden = true;
 
         // Add your HTML content using doc.html() or doc.fromHTML()
         await doc.html(document.getElementById('body'), {
@@ -66,10 +70,11 @@ const single_summary = () => {
         document.getElementById('verified').hidden = true;
         document.getElementById('header').hidden = false;
         document.getElementById('download-single').hidden = false;
+        document.getElementById('penilaian-single').hidden = false;
     }
 
     // Event Handler
-    if (photographyMainElement) {
+    if (singleMainElement) {
         const id_user = localStorage.getItem('uuid');
         getSummaryData(id_user);
         document.getElementById('verified').hidden = true;

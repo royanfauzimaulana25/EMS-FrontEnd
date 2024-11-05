@@ -9,14 +9,15 @@ const penanggung_jawab_team = async () => {
   const showCounter = async () => {
     const response = await EMSApi.getCountCompetition();
     const response_role = await EMSApi.getPJRole(localStorage.getItem("uuid"));
-
     for (let index in response.data) {
-      if (response.data[index].id_lomba == response_role.data[0]["id_lomba"])
-        document.getElementById("title-lomba-team").innerText =
-          response.data[index].nama_lomba;
-      document.getElementById("team-count").innerText =
-        response.data[index].jumlah_pendaftar;
+      if (response.data[index].id_lomba === response_role.data[0]["id_lomba"]) {
+        var idLomba = response_role.data[0]["id_lomba"];
+        document.getElementById("title-lomba-team").innerText = response.data[index].nama_lomba;
+        document.getElementById("team-count").innerText = response.data[index].jumlah_pendaftar;
+      }
     }
+
+    const response_link = await EMSApi.getLombaLink(idLomba);
   };
 
   const showKelolaLomba = async () => {
@@ -27,7 +28,7 @@ const penanggung_jawab_team = async () => {
 
     for (let item in response.data) {
       if (response.data[item].id_lomba === response_role.data[0]["id_lomba"]) {
-        console.log(response.data[item]);
+        // console.log(response.data[item]);
         let idLomba = response.data[item].id_lomba;
         let namaLomba = response.data[item].nama_lomba;
         let biayaRegistrasi = response.data[item].biaya_registrasi;
@@ -35,6 +36,7 @@ const penanggung_jawab_team = async () => {
         let endtDate = response.data[item].end_date;
         let description = response.data[item].description;
         let kategoriLomba = response.data[item].kategori_lomba;
+        let scoreLink = response.data[item].scoring_link;
 
         let kategoriLombaSelected = "";
         if (kategoriLomba == "team") {
@@ -61,6 +63,7 @@ const penanggung_jawab_team = async () => {
                                       data-bs-toggle="modal"
                                       data-bs-target="#modal_${idLomba}"> Update
                                   </button>
+                                  <a class="btn btn-primary" href="${scoreLink}"  target="_blank">Lihat Penilaian</a>
                               </td>
                           <tr>
                               `;
@@ -139,6 +142,10 @@ const penanggung_jawab_team = async () => {
                     <input type="file" class="form-control" id="ilustrasi" name="ilustrasi" >
                   </div>
 
+                  <div class="col-md-12">
+                    <label class="form-label" for="scoring_link">Link Penilaian</label>
+                    <input type="text" class="form-control" id="scoring_link" name="scoring_link" value="${scoreLink}">
+                  </div>
                   
                   <select
                     id="kategori_lomba"
@@ -378,6 +385,23 @@ const penanggung_jawab_team = async () => {
 
     modalContainer.innerHTML += await modal;
   };
+
+   // Toats
+   const ToastModal = (status, message) => {
+    const toastElement = document.getElementById("toast");
+    const toastBody = (document.querySelector(".toast-body").innerText =
+      message);
+    if (status === "error") {
+      document.getElementById("toast-title").innerHTML =
+        ' <i class="bi bi-x-circle-fill text-danger"></i> Gagal ';
+    } else {
+      document.getElementById("toast-title").innerHTML =
+        ' <i class="bi bi-check-circle-fill text-success"></i> Berhasil ';
+    }
+    const toastBootstrap = Toast.getOrCreateInstance(toastElement);
+    toastBootstrap.show();
+  };
+
 
   // Event Listener
   if (counterTeamElement) {

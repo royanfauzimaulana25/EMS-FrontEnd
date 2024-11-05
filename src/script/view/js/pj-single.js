@@ -10,13 +10,19 @@ const penanggung_jawab_single = async () => {
     const response = await EMSApi.getCountCompetition();
     const response_role = await EMSApi.getPJRole(localStorage.getItem("uuid"));
 
+    // console.log(response.data);
+
     for (let index in response.data) {
-      if (response.data[index].id_lomba == response_role.data[0]["id_lomba"])
-        document.getElementById("title-lomba-single").innerText =
-          response.data[index].nama_lomba;
-      document.getElementById("single-count").innerText =
-        response.data[index].jumlah_pendaftar;
+      if (response.data[index].id_lomba == response_role.data[0]["id_lomba"]){
+        var idLomba = response_role.data[0]["id_lomba"];
+        
+        document.getElementById("title-lomba-single").innerText = response.data[index].nama_lomba;
+        document.getElementById("single-count").innerText = response.data[index].jumlah_pendaftar;
+      }
     }
+
+    const response_link = await EMSApi.getLombaLink(idLomba);
+    // console.log(response_link.data[0]['scoring_link']);
   };
 
   const showKelolaLomba = async () => {
@@ -33,6 +39,7 @@ const penanggung_jawab_single = async () => {
         let endtDate = response.data[item].end_date;
         let description = response.data[item].description;
         let kategoriLomba = response.data[item].kategori_lomba;
+        let scoreLink = response.data[item].scoring_link;
 
         let kategoriLombaSelected = "";
         if (kategoriLomba == "single") {
@@ -59,6 +66,7 @@ const penanggung_jawab_single = async () => {
                                       data-bs-toggle="modal"
                                       data-bs-target="#modal_${idLomba}"> Update
                                   </button>
+                                  <a class="btn btn-primary" href="${scoreLink}"  target="_blank">Lihat Penilaian</a>
                               </td>
                           <tr>
                               `;
@@ -136,6 +144,11 @@ const penanggung_jawab_single = async () => {
                     <label class="form-label" for="ilustrasi">Gambar Ilustrasi Lomba</label>
                     <input type="file" class="form-control" id="ilustrasi" name="ilustrasi" >
                   </div>
+                  
+                  <div class="col-md-12">
+                    <label class="form-label" for="scoring_link">Link Penilaian</label>
+                    <input type="text" class="form-control" id="scoring_link" name="scoring_link" value="${scoreLink}">
+                  </div>
 
                   
                   <select
@@ -189,7 +202,7 @@ const penanggung_jawab_single = async () => {
               }
             });
           }
-        }, 1);
+        }, 1000);
       }
     }
   };
@@ -199,7 +212,7 @@ const penanggung_jawab_single = async () => {
     const response_role = await EMSApi.getPJRole(localStorage.getItem("uuid"));
     const bodyTable = document.getElementById("body-table-pendaftar-single");
     let count = 1;
-    console.log(response.data[0]);
+    // console.log(response.data[0]);
     for (let item in response.data) {
       if (response.data[item].id_lomba === response_role.data[0]["id_lomba"]) {
         let id_pendaftaran = response.data[item].id_pendaftaran;

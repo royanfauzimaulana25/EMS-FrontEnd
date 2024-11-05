@@ -15,8 +15,6 @@ const basketball_summary = () => {
     const getSummaryData = async (id) => {
         const response = await EMSApi.getTeam(id);
 
-        console.log(response.data);
-
         // General Information 
         document.getElementById('lomba-team').innerText = response.data.general['nama_lomba'];
         document.getElementById('id_pendaftaran').innerText = response.data.general['id_pendaftaran'];
@@ -51,7 +49,8 @@ const basketball_summary = () => {
         document.getElementById('alamat_4').innerText = response.data.member[3]['alamat'];
         document.getElementById('prestasi_4').innerText = response.data.member[3]['prestasi'];
 
-        // return response;
+        var linkElement = document.getElementById('penilaian-team');
+        linkElement.setAttribute("href", `${response.data.general['scoring_link']}`);
     }
 
     const donwloadBuktiHandler = async (event) => {

@@ -1,5 +1,7 @@
 import { Alert, Modal, Toast } from "bootstrap";
+import EMSApi from "../../data/apis.js";
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import { ResponseError } from "xendit-node";
 
 const account = () => {
     // Protect Page without login
@@ -9,17 +11,11 @@ const account = () => {
 
     const listUrl = [
         `${basePath}/registration/competition-option.html`,
-        `${basePath}/registration/basketball/basketball-registration.html`,
-        `${basePath}/registration/basketball/basketball-summary.html`,
-        `${basePath}/registration/photography/photography-registration.html`,
-        `${basePath}/registration/photography/photography-summary.html`,
+        `${basePath}/registration/team/team-registration.html`,
+        `${basePath}/registration/team/team-summary.html`,
+        `${basePath}/registration/single/single-registration.html`,
+        `${basePath}/registration/single/single-summary.html`,
         ];
-
-    if (!uuid && listUrl.includes(currentUrl)) {        
-    // Redirect to login page if no user is found
-        window.location.pathname = '../auth/login.html'; 
-    };
-
 
     // Get Element ======================================================
     const accountNameElement = document.getElementById("person-name");
@@ -27,6 +23,20 @@ const account = () => {
 
 
     // Function =========================================================
+    // Cek Registration Status
+    const cekRegistrationStatus = async () => {
+        const response = await EMSApi.cekRegistration(uuid);
+        
+        if (response['data'] === 'team'){
+            window.location.pathname = 'registration/team/team-summary.html'; 
+        } 
+
+        if (response['data'] === 'single'){
+            window.location.pathname = 'registration/single/single-summary.html'; 
+        }
+        // console.log(response['data']);
+    };  
+
     // Logout
     const logoutHandler = async (event) => {
         event.preventDefault();
@@ -47,7 +57,16 @@ const account = () => {
     if (logoutElement) {
         logoutElement.addEventListener("click", logoutHandler);
     };
+    
+    if (!uuid && listUrl.includes(currentUrl)) {        
+        // Redirect to login page if no user is found
+            window.location.pathname = '../auth/login.html'; 
+        };
 
+    if (uuid && currentUrl == `${basePath}/registration/competition-option.html` ) {        
+        // Redirect to Summary page if user already registered
+            cekRegistrationStatus();
+        };
     
 };
 
