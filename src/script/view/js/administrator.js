@@ -10,7 +10,7 @@ const administrator = async () => {
 
   // Function =========================================================
   const showCounter = async () => {
-    const counterContainer = document.getElementById('couter-container');
+    const counterContainer = document.getElementById('counter-container');
     const response = await EMSApi.getCountCompetition();
     console.log(response);
     for (let item in response.data) {
@@ -25,7 +25,7 @@ const administrator = async () => {
                 ${response.data[item]["jumlah_pendaftar"]}
               </div>
               <div class="fs-3">Tim</div>
-            </div>
+        </div>
         `
         counterContainer.innerHTML += content;
 
@@ -40,7 +40,7 @@ const administrator = async () => {
                 ${response.data[item]["jumlah_pendaftar"]}
               </div>
               <div class="fs-3">Peserta</div>
-            </div>
+        </div>
         `
         counterContainer.innerHTML += content;
       }
@@ -59,6 +59,7 @@ const administrator = async () => {
       let endtDate = response.data[item].end_date;
       let description = response.data[item].description;
       let kategoriLomba = response.data[item].kategori_lomba;
+      let scoreLink = response.data[item].scoring_link;
 
       let kategoriLombaSelected = '';
       if (kategoriLomba == 'single') {
@@ -95,18 +96,15 @@ const administrator = async () => {
                             `;
 
       let content = `
-      <form id="${idLomba}-form" class="row g-3">
-            <div class="col-md-6">
-                  <label for="id_lomba" class="form-label">ID Lomba</label>
-                  <input
+            <form id="${idLomba}-form" class="row g-3">
+              <input
                     type="text"
                     class="form-control"
                     id="id_lomba"
                     name="id_lomba"
                     value="${idLomba}"
-                    disabled
-                  />
-                </div>
+                    hidden
+                  />  
                 <div class="col-md-6">
                   <label for="nama_lomba" class="form-label">Nama Lomba</label>
                   <input
@@ -183,6 +181,11 @@ const administrator = async () => {
                     ${kategoriLombaSelected}
                   </select>
                 </div>
+
+                <div class="col-md-6">
+                    <label class="form-label" for="scoring_link">Link Penilaian</label>
+                    <input type="text" class="form-control" id="scoring_link" name="scoring_link" value="${scoreLink}">
+                  </div>
             </form>
       `;
 
@@ -218,19 +221,21 @@ const administrator = async () => {
                                 `;
 
             const form = document.getElementById(`${idLomba}-form`);
-            
+            console.log(form);
             var data = new FormData(form);
-            let response = await EMSApi.updateLomba(data);
-            console.log(response.status);
-            if (response.status === "success") {
-              ToastModal("success", "berhasil update");
-              document.querySelector(`#modal_${idLomba} .btn-close`).click();
-              modalActionButton.disabled = false;
-              modalActionButton.innerHTML = "Save Changes";
-            }
+            console.log(data)
+              let response = await EMSApi.updateLomba(data);
+              console.log(response.status);
+              if (response.status === "success") {
+                ToastModal("success", "berhasil update");
+                document.querySelector(`#modal_${idLomba} .btn-close`).click();
+                modalActionButton.disabled = false;
+                modalActionButton.innerHTML = "Save Changes";
+                setTimeout(location.reload(), 1000);
+              }
           });
         }
-      }, 1);
+      }, 1000);
 
 
       // Modal Delete

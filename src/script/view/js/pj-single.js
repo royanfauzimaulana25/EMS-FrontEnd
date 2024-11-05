@@ -189,8 +189,9 @@ const penanggung_jawab_single = async () => {
                                   `;
 
               const form = document.getElementById(`${idLomba}-form`);
-
+              console.log(form);
               var data = new FormData(form);
+              console.log(data);
               let response = await EMSApi.updateLomba(data);
               // console.log(response.status);
               if (response.status === "success") {
@@ -198,7 +199,7 @@ const penanggung_jawab_single = async () => {
                 document.querySelector(`#modal_${idLomba} .btn-close`).click();
                 modalActionButton.disabled = false;
                 modalActionButton.innerHTML = "Save Changes";
-                setTimeout(location.reload(), 5000);
+                // setTimeout(location.reload(), 10000000);
               }
             });
           }
